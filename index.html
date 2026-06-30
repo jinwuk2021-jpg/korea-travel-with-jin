@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cẩm nang Seoul × Daejeon · 10–15.7.2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+:root{
+  --night:#171327; --night2:#221A3B; --hanji:#F7F1E6; --hanji2:#FBF7EF;
+  --ink:#2B2436; --muted:#766D86; --line:#E7DEcd; --persimmon:#E8623A; --gold:#D9A441;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--night);color:var(--ink);
+  font-family:'Be Vietnam Pro',system-ui,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
+:lang(ko),.kr,.copy b,.mini{font-family:'Noto Sans KR','Be Vietnam Pro',sans-serif}
+a{color:inherit}
+img{display:block;max-width:100%}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 80% -10%, #3a2a55 0%, transparent 55%),
+  radial-gradient(100% 80% at 0% 110%, #5a2d3a 0%, transparent 50%), var(--night);
+  color:#fff;padding:54px 22px 30px}
+.hero .watermark{position:absolute;right:-2%;top:-6%;font-family:'Noto Sans KR';
+  font-weight:700;font-size:34vw;color:#fff;opacity:.04;line-height:.8;pointer-events:none}
+.hero .eyebrow{font-weight:600;letter-spacing:.32em;text-transform:uppercase;
+  font-size:12px;color:var(--gold);margin:0 0 14px}
+.wordmark{font-family:'Unbounded';font-weight:800;letter-spacing:-.01em;
+  font-size:clamp(42px,12vw,84px);line-height:.92;margin:0}
+.wordmark .x{color:var(--persimmon)}
+.wordmark .dj{font-size:.46em;display:block;font-weight:600;letter-spacing:.02em;margin-top:4px}
+.hero .sub{max-width:620px;font-size:clamp(15px,2.6vw,18px);color:#E7E0F0;margin:18px 0 0}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chip{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);
+  padding:7px 13px;border-radius:999px;font-size:13px;font-weight:600}
+.chip.acc{background:var(--persimmon);border-color:var(--persimmon)}
+.callout{margin-top:22px;background:var(--night2);border:1px solid rgba(217,164,65,.4);
+  border-left:4px solid var(--gold);border-radius:12px;padding:14px 16px;max-width:680px;
+  font-size:14px;color:#EDE7F5}
+.callout b{color:#fff}
+.strip{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:24px;max-width:680px}
+.strip img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:10px;opacity:.92}
+@media(max-width:560px){.strip{grid-template-columns:repeat(3,1fr)}.strip img:nth-child(n+4){display:none}}
+
+/* ---------- WRAP ---------- */
+.wrap{background:var(--hanji);border-radius:26px 26px 0 0;margin-top:18px;
+  padding:30px 18px 10px;max-width:1080px;margin-inline:auto}
+.lead{max-width:760px;margin:6px auto 26px;text-align:center;color:var(--muted);font-size:14.5px}
+.block-title{font-family:'Unbounded';font-weight:600;font-size:13px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--persimmon);text-align:center;margin:34px 0 4px}
+.block-sub{text-align:center;font-weight:800;font-size:clamp(22px,4vw,30px);margin:0 0 20px;color:var(--ink)}
+
+/* ---------- TICKETS ---------- */
+.tickets{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.ticket{display:flex;background:var(--hanji2);border:1px solid var(--line);
+  border-radius:14px;overflow:hidden;box-shadow:0 1px 0 rgba(0,0,0,.03)}
+.ticket .stub{flex:0 0 64px;background:var(--c);color:#fff;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:2px;position:relative}
+.ticket .stub::after{content:"";position:absolute;right:-1px;top:0;bottom:0;width:2px;
+  background-image:radial-gradient(circle,var(--hanji2) 1.6px,transparent 1.7px);
+  background-size:2px 9px;background-repeat:repeat-y}
+.d-code{font-family:'Unbounded';font-weight:800;font-size:16px;line-height:1}
+.d-wd{font-size:11px;opacity:.9;letter-spacing:.08em}
+.t-body{padding:12px 14px;flex:1;min-width:0}
+.t-body h3{margin:0 0 8px;font-size:15px;font-weight:800;color:var(--ink)}
+.t-body ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.t-body li{display:flex;gap:8px;font-size:13px}
+.t-body .lab{flex:0 0 52px;font-weight:700;color:var(--c)}
+.t-body .txt{color:#473e57}
+.mini{font-family:'Noto Sans KR';background:#efe7d6;border-radius:6px;padding:0 5px;
+  font-size:11.5px;text-decoration:none;white-space:nowrap}
+.t-cost{margin-top:10px;font-size:12.5px;color:var(--muted);border-top:1px dashed var(--line);padding-top:8px}
+.t-cost b{color:var(--ink)}
+
+/* ---------- SECTIONS / CARDS ---------- */
+.sec{margin-top:40px}
+.sec-head{display:flex;align-items:center;gap:10px;margin:0 0 16px}
+.sec-head .dot{width:12px;height:12px;border-radius:50%;background:var(--c)}
+.sec-head h2{font-size:clamp(20px,3.4vw,26px);font-weight:800;margin:0;color:var(--ink)}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(270px,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;
+  display:flex;flex-direction:column;box-shadow:0 6px 18px rgba(30,20,50,.06);
+  transition:transform .25s ease, box-shadow .25s ease}
+@media(hover:hover){.card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(30,20,50,.12)}}
+.ph{position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,var(--c),#0000)}
+.ph img{width:100%;height:100%;object-fit:cover}
+.ph .ph-fallback{display:none;position:absolute;inset:0;align-items:center;justify-content:center;
+  font-family:'Noto Sans KR';font-weight:700;font-size:22px;color:#fff;
+  background:linear-gradient(135deg,var(--c),#3a2a55);padding:10px;text-align:center}
+.ph.noimg .ph-fallback{display:flex}
+.ph .rt{position:absolute;left:10px;top:10px;background:rgba(23,19,39,.82);color:#fff;
+  font-size:12px;font-weight:700;padding:4px 9px;border-radius:999px}
+.ph .dish{position:absolute;left:10px;bottom:10px;background:var(--c);color:#fff;
+  font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:999px;letter-spacing:.01em}
+.bd{padding:13px 14px 15px;display:flex;flex-direction:column;flex:1}
+.bd h3{margin:0 0 6px;font-size:16px;font-weight:800;color:var(--ink);line-height:1.25}
+.bd h3 .kr{display:block;font-weight:500;font-size:12.5px;color:var(--muted);margin-top:2px}
+.tip{margin:0 0 10px;font-size:13px;color:#4b4358}
+.meta{margin:0;font-size:12px;color:var(--muted)}
+.meta.hr{margin-top:2px}
+.copy{margin:10px 0 11px;font-size:12.5px;background:var(--hanji);border:1px dashed var(--line);
+  border-radius:8px;padding:6px 9px;color:#5a5168}
+.copy b{color:var(--ink)}
+.btns{display:flex;gap:8px;margin-top:auto}
+.btn{flex:1;text-align:center;text-decoration:none;font-size:12.5px;font-weight:700;
+  padding:8px 6px;border-radius:9px;border:1px solid var(--line)}
+.btn.nav{background:var(--c);color:#fff;border-color:transparent}
+.btn.map{background:#fff;color:var(--ink)}
+@media(hover:hover){.btn:hover{filter:brightness(1.05)}}
+
+/* ---------- BUDGET ---------- */
+.budget{margin-top:42px;background:var(--night);color:#fff;border-radius:20px;padding:24px 20px}
+.budget h2{font-size:clamp(20px,3.4vw,26px);margin:0 0 4px;font-weight:800}
+.budget p.sm{color:#c9c1da;font-size:13px;margin:0 0 16px}
+.budget table{width:100%;border-collapse:collapse;font-size:14px}
+.budget td,.budget th{padding:9px 8px;text-align:left;border-bottom:1px solid rgba(255,255,255,.1)}
+.budget td:nth-child(2),.budget td:nth-child(3){text-align:right;font-variant-numeric:tabular-nums}
+.budget tr.total td{font-weight:800;color:var(--gold);border-top:2px solid rgba(217,164,65,.5);font-size:15px}
+.other{margin-top:16px;font-size:13px;color:#d6cfe6;background:var(--night2);
+  border-radius:12px;padding:14px 16px;line-height:1.7}
+.other b{color:#fff}
+
+/* ---------- FOOTER ---------- */
+footer{text-align:center;padding:34px 18px 44px;color:var(--muted);font-size:13px}
+footer .love{font-family:'Unbounded';font-weight:600;color:var(--persimmon);font-size:15px;margin-bottom:8px}
+
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* ---------- MAP ---------- */
+.mapwrap{margin-top:16px}
+.mapbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
+.dayseg{display:inline-flex;background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px;gap:4px}
+.dayseg button{border:0;background:transparent;font-family:inherit;font-weight:700;font-size:13px;padding:7px 13px;border-radius:999px;cursor:pointer;color:var(--muted)}
+.dayseg button.on{color:#fff}
+.openroute{margin-left:auto;text-decoration:none;font-weight:700;font-size:13px;color:#fff;background:var(--persimmon);padding:9px 16px;border-radius:999px}
+#map{height:460px;border-radius:16px;border:1px solid var(--line);box-shadow:0 8px 22px rgba(30,20,50,.08);z-index:0}
+@media(max-width:560px){#map{height:380px}.openroute{margin-left:0}}
+.pin{display:flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;color:#fff;font-weight:800;font-size:13px;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.45);font-family:'Be Vietnam Pro',sans-serif}
+.leaflet-popup-content{font-family:'Be Vietnam Pro',sans-serif;font-size:13px;margin:10px 12px;line-height:1.45}
+.leaflet-popup-content b{font-size:14px}
+.leaflet-popup-content .pk{font-family:'Noto Sans KR',sans-serif}
+.leaflet-popup-content a{color:var(--persimmon);font-weight:700;text-decoration:none}
+.maptip{font-size:12.5px;color:var(--muted);margin:10px 2px 0}
+
+</style>
+</head>
+<body>
+<header class="hero">
+  <span class="watermark">서울</span>
+  <p class="eyebrow">Cẩm nang du lịch · 10–15.7.2026</p>
+  <h1 class="wordmark">SEOUL <span class="x">×</span> DAEJEON<span class="dj">6 ngày · ăn sập Seoul &amp; cổ vũ MSI</span></h1>
+  <p class="sub">Hành trình ăn uống – cà phê – tham quan trọn vẹn, kèm địa chỉ tiếng Hàn để paste thẳng vào Naver. Toàn món thuần Hàn, không pha tạp.</p>
+  <div class="chips">
+    <span class="chip acc">MSI ở Daejeon</span>
+    <span class="chip">KTX Seoul ⇄ Daejeon ~1h</span>
+    <span class="chip">Khách sạn: Seongbuk-gu</span>
+    <span class="chip">~5,3 triệu₫/người (ăn uống)</span>
+  </div>
+  <div class="callout"><b>Lưu ý:</b> hai trận MSI (11/7 Lower Final · 12/7 Grand Final) ở <b>Daejeon Convention Center II</b> (대전 유성구 엑스포로 107), không phải Seoul. Đi KTX, ngủ Daejeon đêm 11/7, về Seoul tối 12/7.</div>
+  <div class="strip"><img loading="lazy" src="https://lh3.googleusercontent.com/place-photos/AJRVUZNc_RxV8KUBI78XNkkYJ4OO2tI-RWJRwe7YPhMy6wemBcMhd-YD8Z9lJRGISvFSY--uVNpCXlL44fWb7OQ8WdGQTuMeIi5rwUtCDsj2kYew0NKM9WbnLFmYiOC6-okpM8pVLLQCZbzRR3Src7Y=s4800-w800-h600" alt=""><img loading="lazy" src="https://lh3.googleusercontent.com/place-photos/AJRVUZMj_KnIXUBhUmMhooZRTL7Nvuyyh56MidVSFxdoyMYwVGhDMJJjFzini18VeLXtmPjquMX2s6LEGLzMQs37rg1_ZUYyuYvXArBUNclXfUaMeQVSRvL4xKPP_-YRXgQOBjYFM8i1alE5F6y3RQ=s4800-w800-h600" alt=""><img loading="lazy" src="https://lh3.googleusercontent.com/place-photos/AJRVUZNqJndYAkGAAQ7oTyb9iAcWssAPj5mke3oLcC6bxhf3BM_a84XS-ig6XQtfGgh7X23qd8vSLBt5deg0TY3bE9mzJqjT27v1jjHYxifTvqczWuE_6ZHQrWTOjqmcclVxQX9TqVrvW-SC-fml3wc=s4800-w800-h600" alt=""><img loading="lazy" src="https://lh3.googleusercontent.com/place-photos/AJRVUZM8YfK3_wF3Shyv3-5Y0uYtxN8S7WM78Y524evrGUK-vua19At8ytOPKwQVCW0aG8JM6HmCColIKgzb83xvnsoG0mYh_l0cSuHEP3BEcp_cWz0-jQzwsrQGEWsoVhRIxdpqicLZquWGKhVOmcmEzbCN6Q=s4800-w800-h600" alt=""><img loading="lazy" src="https://lh3.googleusercontent.com/place-photos/AJRVUZPfWD3Q6GKuqSmTpLdFLI1_SC3DCVsdagl2iqIg41QtcJLkodEerCem0w09awrjQtnj4Qkg7DxV3R4bPJ2MNOkdm_EvYjsEOnMcLwWI9fpVKj2j-8EO8BMiRblyA6qajdMcnplYow9DvTDyCfw=s4800-w800-h600" alt=""></div>
+</header>
+
+<main class="wrap">
+  <p class="lead">Bấm <b>“Mở Naver”</b> ở mỗi địa điểm để xem ảnh, review &amp; chỉ đường — hoặc copy tên tiếng Hàn dán vào app Naver Map.</p>
+
+  <p class="block-title">Hành trình</p>
+  <h2 class="block-sub">Mỗi ngày ăn gì, cà phê ở đâu</h2>
+  <div class="tickets"><article class="ticket" style="--c:#7A5EA6">
+  <div class="stub"><span class="d-code">10/7</span><span class="d-wd">T6</span></div>
+  <div class="t-body">
+    <h3>Đến Seoul · khu Seongbuk</h3>
+    <ul><li><span class="lab">Trưa</span><span class="txt">Majeonteo — ghẹ ngâm tương <a class="mini" href="https://map.naver.com/p/search/%EB%A7%88%EC%A0%84%ED%84%B0" target="_blank" rel="noopener">마전터</a></span></li><li><span class="lab">Cà phê</span><span class="txt">Suyeonsanbang — nhà trà hanok <a class="mini" href="https://map.naver.com/p/search/%EC%88%98%EC%97%B0%EC%82%B0%EB%B0%A9" target="_blank" rel="noopener">수연산방</a></span></li><li><span class="lab">Tối</span><span class="txt">Geumdwaeji Sikdang — BBQ thịt heo <a class="mini" href="https://map.naver.com/p/search/%EA%B8%88%EB%8F%BC%EC%A7%80%EC%8B%9D%EB%8B%B9" target="_blank" rel="noopener">금돼지식당</a></span></li></ul>
+    <div class="t-cost">Ăn + cà phê: <b>~68.000₩</b></div>
+  </div>
+</article>
+<article class="ticket" style="--c:#2F7D5B">
+  <div class="stub"><span class="d-code">11/7</span><span class="d-wd">T7</span></div>
+  <div class="t-body">
+    <h3>Daejeon · Lower Final · ngủ lại</h3>
+    <ul><li><span class="lab">Sáng</span><span class="txt">Cà phê gần ga Seoul trước khi lên KTX</span></li><li><span class="lab">Trưa</span><span class="txt">Sungsimdang — tiệm bánh huyền thoại <a class="mini" href="https://map.naver.com/p/search/%EC%84%B1%EC%8B%AC%EB%8B%B9" target="_blank" rel="noopener">성심당</a></span></li><li><span class="lab">Tối</span><span class="txt">Wonjo Dwitgogi — BBQ má heo (Yuseong) <a class="mini" href="https://map.naver.com/p/search/%EC%9B%90%EC%A1%B0%20%EB%92%B7%EA%B3%A0%EA%B8%B0" target="_blank" rel="noopener">원조 뒷고기</a></span></li><li><span class="lab">Cà phê</span><span class="txt">Cafe BlessRoll — bánh kem <a class="mini" href="https://map.naver.com/p/search/%EB%B8%94%EB%A0%88%EC%8A%A4%EB%A1%A4" target="_blank" rel="noopener">블레스롤</a></span></li></ul>
+    <div class="t-cost">Ăn + cà phê: <b>~49.000₩</b></div>
+  </div>
+</article>
+<article class="ticket" style="--c:#2F7D5B">
+  <div class="stub"><span class="d-code">12/7</span><span class="d-wd">CN</span></div>
+  <div class="t-body">
+    <h3>Daejeon · Grand Final · tối về Seoul</h3>
+    <ul><li><span class="lab">Sáng</span><span class="txt">Sungsimdang / BlessRoll <a class="mini" href="https://map.naver.com/p/search/%EC%84%B1%EC%8B%AC%EB%8B%B9" target="_blank" rel="noopener">성심당</a></span></li><li><span class="lab">Trưa</span><span class="txt">Gukbap nhanh gần venue / Fan Festa</span></li><li><span class="lab">Khuya</span><span class="txt">Về Seoul → Yoogane dakgalbi (mở tới 1:30) <a class="mini" href="https://map.naver.com/p/search/%EC%9C%A0%EA%B0%80%EB%84%A4%20%EB%8B%AD%EA%B0%88%EB%B9%84%20%EB%8F%99%EB%8C%80%EB%AC%B8%EC%A0%90" target="_blank" rel="noopener">유가네 닭갈비 동대문점</a></span></li></ul>
+    <div class="t-cost">Ăn + cà phê: <b>~45.000₩</b></div>
+  </div>
+</article>
+<article class="ticket" style="--c:#C24C3A">
+  <div class="stub"><span class="d-code">13/7</span><span class="d-wd">T2</span></div>
+  <div class="t-body">
+    <h3>Cung điện + Hanok + Chợ Gwangjang</h3>
+    <ul><li><span class="lab">Sáng</span><span class="txt">Imun Seolnongtang — canh xương bò <a class="mini" href="https://map.naver.com/p/search/%EC%9D%B4%EB%AC%B8%EC%84%A4%EB%86%8D%ED%83%95" target="_blank" rel="noopener">이문설농탕</a></span></li><li><span class="lab">Trưa</span><span class="txt">Tosokchon — gà hầm sâm <a class="mini" href="https://map.naver.com/p/search/%ED%86%A0%EC%86%8D%EC%B4%8C%20%EC%82%BC%EA%B3%84%ED%83%95" target="_blank" rel="noopener">토속촌 삼계탕</a></span></li><li><span class="lab">Cà phê</span><span class="txt">Hanok Langsom / Seoul Coffee (Ikseon) <a class="mini" href="https://map.naver.com/p/search/%ED%95%9C%EC%98%A5%EB%9E%91%EC%8D%B8%20%EC%9D%B5%EC%84%A0" target="_blank" rel="noopener">한옥랑썸 익선</a></span></li><li><span class="lab">Tối</span><span class="txt">Chợ Gwangjang — street food <a class="mini" href="https://map.naver.com/p/search/%EA%B4%91%EC%9E%A5%EC%8B%9C%EC%9E%A5" target="_blank" rel="noopener">광장시장</a></span></li></ul>
+    <div class="t-cost">Ăn + cà phê: <b>~65.000₩</b></div>
+  </div>
+</article>
+<article class="ticket" style="--c:#3E8E84">
+  <div class="stub"><span class="d-code">14/7</span><span class="d-wd">T3</span></div>
+  <div class="t-body">
+    <h3>Changdeokgung + Seongsu + Namsan</h3>
+    <ul><li><span class="lab">Sáng</span><span class="txt">Namhae Gulgukbap — canh hàu <a class="mini" href="https://map.naver.com/p/search/%EB%82%A8%ED%95%B4%EA%B5%B4%EA%B5%AD%EB%B0%A5" target="_blank" rel="noopener">남해굴국밥</a></span></li><li><span class="lab">Trưa</span><span class="txt">Eulji Myeonok — mì lạnh naengmyeon <a class="mini" href="https://map.naver.com/p/search/%EC%9D%84%EC%A7%80%EB%A9%B4%EC%98%A5" target="_blank" rel="noopener">을지면옥</a></span></li><li><span class="lab">Cà phê</span><span class="txt">Cafe Onion + Highline (Seongsu) <a class="mini" href="https://map.naver.com/p/search/%EC%96%B4%EB%8B%88%EC%96%B8%20%EC%84%B1%EC%88%98" target="_blank" rel="noopener">어니언 성수</a></span></li><li><span class="lab">Tối</span><span class="txt">Chợ đêm Myeongdong — street food <a class="mini" href="https://map.naver.com/p/search/%EB%AA%85%EB%8F%99" target="_blank" rel="noopener">명동</a></span></li></ul>
+    <div class="t-cost">Ăn + cà phê: <b>~60.000₩</b></div>
+  </div>
+</article>
+<article class="ticket" style="--c:#D98A2B">
+  <div class="stub"><span class="d-code">15/7</span><span class="d-wd">T4</span></div>
+  <div class="t-body">
+    <h3>Về nhà</h3>
+    <ul><li><span class="lab">Sáng</span><span class="txt">Cà phê + mua quà ăn vặt (Myeongdong/Hongdae)</span></li><li><span class="lab">Trưa</span><span class="txt">AREX ra sân bay Incheon</span></li></ul>
+    <div class="t-cost">Ăn + cà phê: <b>~14.000₩</b></div>
+  </div>
+</article></div>
+  
+  <p class="block-title" style="margin-top:46px">Lộ trình</p>
+  <h2 class="block-sub">Bản đồ di chuyển từng ngày</h2>
+  <div class="mapwrap">
+    <div class="mapbar">
+      <div class="dayseg" id="dayseg">
+        <button data-d="1" class="on">Day 1 · 10/7</button>
+        <button data-d="2">Day 2 · 13/7</button>
+        <button data-d="3">Day 3 · 14/7</button>
+      </div>
+      <a class="openroute" id="openroute" target="_blank" rel="noopener">↗ Mở chỉ đường</a>
+    </div>
+    <div id="map"></div>
+    <p class="maptip">Bấm số trên bản đồ để xem chi tiết &amp; link Naver · kéo/zoom thoải mái. Hai ngày 11–12/7 ở Daejeon (KTX ~1h) không hiển thị ở đây.</p>
+  </div>
+
+
+  <p class="block-title" style="margin-top:46px">Khám phá</p>
+  <h2 class="block-sub">Địa điểm theo nhóm</h2>
+  <section class="sec" id="sec-sight">
+  <div class="sec-head" style="--c:#3E8E84"><span class="dot"></span><h2>Tham quan &amp; check-in</h2></div>
+  <div class="grid"><article class="card" style="--c:#3E8E84">
+  <div class="ph">
+    <img loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/place-photos/AJRVUZNc_RxV8KUBI78XNkkYJ4OO2tI-RWJRwe7YPhMy6wemBcMhd-YD8Z9lJRGISvFSY--uVNpCXlL44fWb7OQ8WdGQTuMeIi5rwUtCDsj2kYew0NKM9WbnLFmYiOC6-okpM8pVLLQCZbzRR3Src7Y=s4800-w800-h600" alt="Cung điện Gyeongbokgung"
+         onerror="this.closest('.ph').classList.add('noimg')">
+    <span class="ph-fallback">경복궁</span>
+    <span class="rt">★ 4.6</span>
+    
+  </div>
+  <div class="bd">
+    <h3>Cung điện Gyeongbokgung <span class="kr">경복궁</span></h3>
+    <p class="tip">Cung điện lớn nhất triều Joseon. Thuê hanbok là vào cửa miễn phí, chụp ảnh cực đẹp. Xem lễ đổi gác ~10:00.</p>
+    <p class="meta">161 Sajik-ro, Jongno-gu · 사직로 161</p>
+    <p class="meta hr">09:00–17:00 · đóng THỨ BA</p>
+    <div class="copy">Naver: <b>경복궁</b></div>
+    <div class="btns">
+      <a class="btn nav" href="https://map.naver.com/p/search/%EA%B2%BD%EB%B3%B5%EA%B6%81" target="_blank" rel="noopener">Mở Naver</a>
+      <a class="btn map" href="https://www.google.com/maps/search/?api=1&amp;query=%EA%B2%BD%EB%B3%B5%EA%B6%81" target="_blank" rel="noopener">Google Maps</a>
+    </div>
+  </div>
+</article>
+<article class="card" style="--c:#3E8E84">
+  <div class="ph">
+    <img loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/place-photos/AJRVUZMj_KnIXUBhUmMhooZRTL7Nvuyyh56MidVSFxdoyMYwVGhDMJJjFzini18VeLXtmPjquMX2s6LEGLzMQs37rg1_ZUYyuYvXArBUNclXfUaMeQVSRvL4xKPP_-YRXgQOBjYFM8i1alE5F6y3RQ=s4800-w800-h600" alt="Changdeokgung + Vườn Huwon"
+         onerror="this.closest('.ph').classList.add('noimg')">
+    <span class="ph-fallback">창덕궁</span>
+    <span class="rt">★ 4.6</span>
+    
+  </div>
+  <div class="bd">
+    <h3>Changdeokgung + Vườn Huwon <span class="kr">창덕궁</span></h3>
+    <p class="tip">Di sản UNESCO, yên tĩnh &amp; lãng mạn hơn Gyeongbokgung. Tour Vườn Bí mật Huwon giới hạn suất, nên đặt trước.</p>
+    <p class="meta">99 Yulgok-ro, Jongno-gu · 율곡로 99</p>
+    <p class="meta hr">09:00–18:00 · đóng THỨ HAI</p>
+    <div class="copy">Naver: <b>창덕궁</b></div>
+    <div class="btns">
+      <a class="btn nav" href="https://map.naver.com/p/search/%EC%B0%BD%EB%8D%95%EA%B6%81" target="_blank" rel="noopener">Mở Naver</a>
+      <a class="btn map" href="https://www.google.com/maps/search/?api=1&amp;query=%EC%B0%BD%EB%8D%95%EA%B6%81" target="_blank" rel="noopener">Google Maps</a>
+    </div>
+  </div>
+</article>
+<article class="card" style="--c:#3E8E84">
+  <div class="ph">
+    <img loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/place-photos/AJRVUZNqJndYAkGAAQ7oTyb9iAcWssAPj5mke3oLcC6bxhf3BM_a84XS-ig6XQtfGgh7X23qd8vSLBt5deg0TY3bE9mzJqjT27v1jjHYxifTvqczWuE_6ZHQrWTOjqmcclVxQX9TqVrvW-SC-fml3wc=s4800-w800-h600" alt="Làng Hanok Bukchon"
+         onerror="this.closest('.ph').classList.add('noimg')">
+    <span class="ph-fallback">북촌한옥마을</span>
+    <span class="rt">★ 4.4</span>
+    
+  </div>
+  <div class="bd">
+    <h3>Làng Hanok Bukchon <span class="kr">북촌한옥마을</span></h3>
+    <p class="tip">Hẻm nhà cổ tuyệt đẹp, view xuống phố Seoul — góc sống ảo huyền thoại của Seoul.</p>
+    <p class="meta">Gyedong-gil, Jongno-gu · 계동길</p>
+    <p class="meta hr">Khu dân cư · giữ yên sau 17:00</p>
+    <div class="copy">Naver: <b>북촌한옥마을</b></div>
+    <div class="btns">
+      <a class="btn nav" href="https://map.naver.com/p/search/%EB%B6%81%EC%B4%8C%ED%95%9C%EC%98%A5%EB%A7%88%EC%9D%84" target="_blank" rel="noopener">Mở Naver</a>
+      <a class="btn map" href="https://www.google.com/maps/search/?api=1&amp;query=%EB%B6%81%EC%B4%8C%ED%95%9C%EC%98%A5%EB%A7%88%EC%9D%84" target="_blank" rel="noopener">Google Maps</a>
+    </div>
+  </div>
+</article>
+<article class="card" style="--c:#3E8E84">
+  <div class="ph">
+    <img loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/place-photos/AJRVUZM8YfK3_wF3Shyv3-5Y0uYtxN8S7WM78Y524evrGUK-vua19At8ytOPKwQVCW0aG8JM6HmCColIKgzb83xvnsoG0mYh_l0cSuHEP3BEcp_cWz0-jQzwsrQGEWsoVhRIxdpqicLZquWGKhVOmcmEzbCN6Q=s4800-w800-h600" alt="Làng bích họa Ihwa / Naksan"
+         onerror="this.closest('.ph').classList.add('noimg')">
+    <span class="ph-fallback">이화벽화마을</span>
+    <span class="rt">★ 4.1</span>
+    
+  </div>
+  <div class="bd">
+    <h3>Làng bích họa Ihwa / Naksan <span class="kr">이화벽화마을</span></h3>
+    <p class="tip">GẦN khách sạn. Đi bộ dọc tường thành Seoul ngắm hoàng hôn — chiều tối đẹp nhất.</p>
+    <p class="meta">49 Naksan 4-gil, Jongno-gu · 낙산4길 49</p>
+    <p class="meta hr">Cả ngày (ngoài trời)</p>
+    <div class="copy">Naver: <b>이화벽화마을</b></div>
+    <div class="btns">
+      <a class="btn nav" href="https://map.naver.com/p/search/%EC%9D%B4%ED%99%94%EB%B2%BD%ED%99%94%EB%A7%88%EC%9D%84" target="_blank" rel="noopener">Mở Naver</a>
+      <a class="btn map" href="https://www.google.com/maps/search/?api=1&amp;query=%EC%9D%B4%ED%99%94%EB%B2%BD%ED%99%94%EB%A7%88%EC%9D%84" target="_blank" rel="noopener">Google Maps</a>
+    </div>
+  </div>
+</article>
+<article class="card" style="--c:#3E8E84">
+  <div class="ph">
+    <img loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/place-photos/AJRVUZPfWD3Q6GKuqSmTpLdFLI1_SC3DCVsdagl2iqIg41QtcJLkodEerCem0w09awrjQtnj4Qkg7DxV3R4bPJ2MNOkdm_EvYjsEOnMcLwWI9fpVKj2j-8EO8BMiRblyA6qajdMcnplYow9DvTDyCfw=s4800-w800-h600" alt="Tháp N Seoul (Namsan)"
+         onerror="this.closest('.ph').classList.add('noimg')">
+    <span class="ph-fallback">N서울타워</span>
+    <span class="rt">★ 4.5</span>
+    
+  </div>
+  <div class="bd">
+    <h3>Tháp N Seoul (Namsan) <span class="kr">N서울타워</span></h3>
+    <p class="tip">Lên cáp treo ngắm hoàng hôn &amp; view đêm 360°. Có ‘khoá tình yêu’ và nhiều góc chụp đẹp.</p>
+    <p class="meta">105 Namsangongwon-gil, Yongsan-gu · 남산공원길 105</p>
+    <p class="meta hr">10:00–22:30</p>
+    <div class="copy">Naver: <b>N서울타워</b></div>
+    <div class="btns">
+      <a class="btn nav" href="https://map.naver.com/p/search/N%EC%84%9C%EC%9A%B8%ED%83%80%EC%9B%8C" target="_blank" rel="noopener">Mở Naver</a>
+      <a class="btn map" href="https://www.google.com/maps/search/?api=1&amp;query=N%EC%84%9C%EC%9A%B8%ED%83%80%EC%9B%8C" target="_blank" rel="noopener">Google Maps</a>
+    </div>
+  </div>
+</article></div>
+</section>
+<section class="sec" id="sec-cafe">
+  <div class="sec-head" style="--c:#7A5EA6"><span class="dot"></span><h2>Quán cà phê đẹp</h2></div>
+  <div class="grid"><article class="card" style="--c:#7A5EA6">
+  <div class="ph">
+    <img loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/place-photos/AJRVUZPB0c6EhPNI9IRrIqjzUStbYCMm4NHYQZ9xRlHMHN7uRp6Qvcp8PmQSDObguyDLeDtMcEJb-BN7rg82VRyHSY98yS1YbKIsvwFOQ5P8WLV2fqagVb-wdR_4hNUaOF3aCr0nimx0JqxzF-z_C3iQIjpvtg=s4800-w800-h600" alt="Suyeonsanbang"
+         onerror="this.closest('.ph').classList.add('noimg')">
+    <span class="ph-fallback">수연산방</span>
+    <span class="rt">★ 4.1</span>
+    
+  </div>
+  <div class="bd">
+    <h3>Suyeonsanbang <span class="kr">수연산방</span></h3>
+    <p class="tip">Nhà trà hanok cổ đẹp như tranh, GẦN khách sạn. Chỉ bán trà &amp; bingsu (không cà phê). Thử bingsu đậu đỏ.</p>
+    <p class="meta">8 Seongbuk-ro 26-gil, Seongbuk-gu · 성북로26길 8</p>
+    <p class="meta hr">11:30–18:00 · đóng T2 &amp; T3</p>
+    <div class="copy">Naver: <b>수연산방</b></div>
+    <div class="btns">
+      <a class="btn nav" href="https://map.naver.com/p/search/%EC%88%98%EC%97%B0%EC%82%B0%EB%B0%A9" target="_blank" rel="noopener">Mở Naver</a>
+      <a class="btn map" href="https://www.google.com/maps/search/?api=1&amp;query=%EC%88%98%EC%97%B0%EC%82%B0%EB%B0%A9" target="_blank" rel="noopener">Google Maps</a>
+    </div>
+  </div>
+</article>
+<article class="card" style="--c:#7A5EA6">
+  <div class="ph">
+    <img loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/place-photos/AJRVUZOK7AYTf_TjSFgi6Xcx5MSSZJmqw5zIY7J2Opgm461saWYv0zrNAIrtKmom6r2TPYGeEkqzTRBU6lhKoLzzq9x_XdGLvSAa156yx__PiVP3ZD3ZuKD0uAgDuXfkTKa_e1nO3e4Db_yG6d9M0Y6IcwGn1w=s4800-w800-h600" alt="Hanok Langsom Ikseon"
+         onerror="this.closest('.ph').classList.add('noimg')">
+    <span class="ph-fallback">한옥랑썸 익선</span>
+    <span class="rt">★ 4.6</span>
+    
+  </div>
+  <div class="bd">
+    <h3>Hanok Langsom Ikseon <span class="kr">한옥랑썸 익선</span></h3>
+    <p class="tip">Cà phê trong sân hanok ở Ikseon-dong, cổ pha hiện đại, ánh đèn ấm — hợp ngồi nhâm nhi buổi chiều.</p>
+    <p class="meta">21-6 Supyo-ro 28-gil, Jongno-gu · 수표로28길 21-6</p>
+    <p class="meta hr">10:30–22:00</p>
+    <div class="copy">Naver: <b>한옥랑썸 익선</b></div>
+    <div class="btns">
+      <a class="btn nav" href="https://map.naver.com/p/search/%ED%95%9C%EC%98%A5%EB%9E%91%EC%8D%B8%20%EC%9D%B5%EC%84%A0" target="_blank" rel="noopener">Mở Naver</a>
+      <a class="btn map" href="https://www.google.com/maps/search/?api=1&amp;query=%ED%95%9C%EC%98%A5%EB%9E%91%EC%8D%B8%20%EC%9D%B5%EC%84%A0" target="_blank" rel="noopener">Google Maps</a>
+    </div>
+  </div>
+</article>
+<article class="card" style="--c:#7A5EA6">
+  <div class="ph">
+    <img loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/place-photos/AJRVUZMMKc65NzuDptvEa6j_YNVQXQYKr7QuWY588TLNX2kv0JeK7mXa5N9TM-E98dXMJOJ25r82HqZfD1BsHLMyI6f2Z1MxA2pgIf5CTNLK1YPkIHUxkh2LHps_9RaijIsbSRVLDJS-82vRSuMP7Oaxs6skSg=s4800-w800-h600" alt="Seoul Coffee Ikseon"
+         onerror="this.closest('.ph').classList.add('noimg')">
+    <span class="ph-fallback">서울커피</span>
+    <span class="rt">★ 4.2</span>
+    
+  </div>
+  <div class="bd">
+    <h3>Seoul Coffee Ikseon <span class="kr">서울커피</span></h3>
+    <p class="tip">Hanok xinh ở Ikseon-dong, nổi tiếng bingsu dâu &amp; bánh khoai lang. Có mèo nằm trên mái.</p>
+    <p class="meta">166-31 Ikseon-dong, Jongno-gu · 익선동 166-31</p>
+    <p class="meta hr">11:00–22:00</p>
+    <div class="copy">Naver: <b>서울커피</b></div>
+    <div class="btns">
+      <a class="btn nav" href="https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%EC%BB%A4%ED%94%BC" target="_blank" rel="noopener">Mở Naver</a>
+      <a class="btn map" href="https://www.google.com/maps/search/?api=1&amp;query=%EC%84%9C%EC%9A%B8%EC%BB%A4%ED%94%BC" target="_blank" rel="noopener">Google Maps</a>
+    </div>
+  </div>
+</article>
+<article class="card" style="--c:#7A5EA6">
+  <div class="ph">
+    <img loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/place-photos/AJRVUZMtrFOTr2i8vCPq-DRFeHSvHWSm23XYIKBFhztDeHyYV3-wD51fSajQqxag3SjDYVyhO2T5lQEwE17rYbh105b_ZgC2xBfAJHrk5Lp6Xx42L2LWRmYxQHuf8RXkAR0Z-3dSyqx9JmUbYrHoOQ=s4800-w800-h600" alt="Cafe Onion Seongsu"
+         onerror="this.closest('.ph').classList.add('noimg')">
+    <span class="ph-fallback">어니언 성수</span>
+    <span class="rt">★ 4.2</span>
+    
+  </div>
+  <div class="bd">
+    <h3>Cafe Onion Seongsu <span class="kr">어니언 성수</span></h3>
+    <p class="tip">Quán cà phê Instagram nổi tiếng nhất Seongsu — nhà máy bê tông, có sân thượng. Thử bánh mì muối &amp; pandoro.</p>
+    <p class="meta">8 Achasan-ro 9-gil, Seongdong-gu · 아차산로9길 8</p>
+    <p class="meta hr">08:00–22:00</p>
+    <div class="copy">Naver: <b>어니언 성수</b></div>
+    <div class="btns">
+      <a class="btn nav" href="https://map.naver.com/p/search/%EC%96%B4%EB%8B%88%EC%96%B8%20%EC%84%B1%EC%88%98" target="_blank" rel="noopener">Mở Naver</a>
+      <a class="btn map" href="https://www.google.com/maps/search/?api=1&amp;query=%EC%96%B4%EB%8B%88%EC%96%B8%20%EC%84%B1%EC%88%98" target="_blank" rel="noopener">Google Maps</a>
+    </div>
+  </div>
+</article>
+<article class="card" style="--c:#7A5EA6">
+  <div class="ph">
+    <img loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/place-photos/AJRVUZMF5ktwhtwelDPAVSNzvKfbrNrIbDOak-ZRGsymyGdJ-zHWTE0Y9rUiaKOJhWaWBZZvoYM2DMwDj_i9oImyYIZ51Meil5m-fW2VWnQyMWVbEfrhZSMXyQ6NU2ghQsU6pS1JowZuoqPrT5JE3V_iDYahog=s4800-w800-h600" alt="Highline Seongsu"
+         onerror="this.closest('.ph').classList.add('noimg')">
+    <span class="ph-fallback">하이라인 성수</span>
+    <span class="rt">★ 4.9</span>
+    
+  </div>
+  <div class="bd">
+    <h3>Highline Seongsu <span class="kr">하이라인 성수</span></h3>
+    <p class="tip">Quán brunch xinh, chủ siêu dễ thương. Corn latte (vị ngô) &amp; French toast là signature.</p>
+    <p class="meta">10 Seongdeokjeong 9-gil, Seongdong-gu · 성덕정9길 10</p>
+    <p class="meta hr">11:00–19:00 (cuối tuần tới 20:00)</p>
+    <div class="copy">Naver: <b>하이라인 성수</b></div>
+    <div class="btns">
+      <a class="btn nav" href="https://map.naver.com/p/search/%ED%95%98%EC%9D%B4%EB%9D%BC%EC%9D%B8%20%EC%84%B1%EC%88%98" target="_blank" rel="noopener">Mở Naver</a>
+      <a class="btn map" href="https://www.google.com/maps/search/?api=1&amp;query=%ED%95%98%EC%9D%B4%EB%9D%BC%EC%9D%B8%20%EC%84%B1%EC%88%98" target="_blank" rel="noopener">Google Maps</a>
+    </div>
+  </div>
+</article>
+<article class="card" style="--c:#7A5EA6">
+  <div class="ph">
+    <img loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/place-photos/AJRVUZN6H1EelmH-rZDYOYI3D-HsZsJKmy1Jvs0_9outhCBRIPYL--3WsuWlCSAu_KaJzRvV329PdZgK39Wrrj3xPgMVb7VZ5qybTZPoj9qxOi56meXRi2ODWJk97lKU_YsG-k5Wz9gvqLPscpWxgAU=s4800-w800-h600" alt="NUDAKE Haus Dosan"
+         onerror="this.closest('.ph').classList.add('noimg')">
+    <span class="ph-fallback">누데이크 하우스 도산</span>
+    <span class="rt">★ 4.2</span>
+    
+  </div>
+  <div class="bd">
+    <h3>NUDAKE Haus Dosan <span class="kr">누데이크 하우스 도산</span></h3>
+    <p class="tip">Tiệm dessert nghệ thuật của Gentle Monster ở Gangnam. Bánh sừng bò đen ‘Peak’ viral — đẹp và lạ.</p>
+    <p class="meta">50 Apgujeong-ro 46-gil, Gangnam-gu · 압구정로46길 50</p>
+    <p class="meta hr">11:00–21:00</p>
+    <div class="copy">Naver: <b>누데이크 하우스 도산</b></div>
+    <div class="btns">
+      <a class="btn nav" href="https://map.naver.com/p/search/%EB%88%84%EB%8D%B0%EC%9D%B4%ED%81%AC%20%ED%95%98%EC%9A%B0%EC%8A%A4%20%EB%8F%84%EC%82%B0" target="_blank" rel="noopener">Mở Naver</a>
+      <a class="btn map" href="https://www.google.com/maps/search/?api=1&amp;query=%EB%88%84%EB%8D%B0%EC%9D%B4%ED%81%AC%20%ED%95%98%EC%9A%B0%EC%8A%A4%20%EB%8F%84%EC%82%B0" target="_blank" rel="noopener">Google Maps</a>
+    </div>
+  </div>
+</article>
+<article class="card" style="--c:#7A5EA6">
+  <div class="ph">
+    <img loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/place-photos/AJRVUZMtxbxIqXCaSi1bTaB23eC_pM_I37lLOrwNsiHbDjopLJ0HGKuhFXoRtysM5F6BkNAukF1nCHig4783gTXGBGyIJCpLMhFSLVB03Ei3ezxh56tg9JY4tua2qwhcYoE-Jfb_O4to3UlAiWMX5Q=s4800-w800-h600" alt="Layered Yeonnam"
+         onerror="this.closest('.ph').classList.add('noimg')">
+    <span class="ph-fallback">레이어드 연남</span>
+    <span class="rt">★ 4.1</span>
+    
+  </div>
+  <div class="bd">
+    <h3>Layered Yeonnam <span class="kr">레이어드 연남</span></h3>
+    <p class="tip">Quán cozy kiểu Anh gần Hongdae, bánh red velvet hình cún &amp; scone nổi tiếng. Nhiều góc chụp.</p>
+    <p class="meta">161-4 Seongmisan-ro, Mapo-gu · 성미산로 161-4</p>
+    <p class="meta hr">10:00–22:00</p>
+    <div class="copy">Naver: <b>레이어드 연남</b></div>
+    <div class="btns">
+      <a class="btn nav" href="https://map.naver.com/p/search/%EB%A0%88%EC%9D%B4%EC%96%B4%EB%93%9C%20%EC%97%B0%EB%82%A8" target="_blank" rel="noopener">Mở Naver</a>
+      <a class="btn map" href="https://www.google.com/maps/search/?api=1&amp;query=%EB%A0%88%EC%9D%B4%EC%96%B4%EB%93%9C%20%EC%97%B0%EB%82%A8" target="_blank" rel="noopener">Google Maps</a>
+    </div>
+  </div>
+</article></div>
+</section>
+<section class="sec" id="sec-food">
+  <div class="sec-head" style="--c:#C24C3A"><span class="dot"></span><h2>Quán ăn thuần Hàn</h2></div>
+  <div class="grid"><article class="card" style="--c:#C24C3A">
+  <div class="ph">
+    <img loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/place-photos/AJRVUZN4gWw9hqZbvInUduEntges_OR9bI_N_95iQoGbDEN5mo7hQmoHYw43GH8DDvfLHcezODrE4OPJsgypd1D3W0gXAJvPqWVh_cII-wW3auyDd_yFfm0EziJmtxbxXnj2GP71vvBvcTZW6CzGzZr_6-6D=s4800-w800-h600" alt="Tosokchon Samgyetang"
+         onerror="this.closest('.ph').classList.add('noimg')">
+    <span class="ph-fallback">토속촌 삼계탕</span>
+    <span class="rt">★ 4.2</span>
+    <span class="dish">Gà hầm sâm</span>
+  </div>
+  <div class="bd">
+    <h3>Tosokchon Samgyetang <span class="kr">토속촌 삼계탕</span></h3>
+    <p class="tip">Gà hầm sâm trứ danh cạnh Gyeongbokgung. Gà nhồi cơm nếp + táo đỏ + sâm, nước dùng đậm đà.</p>
+    <p class="meta">5 Jahamun-ro 5-gil, Jongno-gu · 자하문로5길 5</p>
+    <p class="meta hr">10:00–22:00 · ~20.000₩</p>
+    <div class="copy">Naver: <b>토속촌 삼계탕</b></div>
+    <div class="btns">
+      <a class="btn nav" href="https://map.naver.com/p/search/%ED%86%A0%EC%86%8D%EC%B4%8C%20%EC%82%BC%EA%B3%84%ED%83%95" target="_blank" rel="noopener">Mở Naver</a>
+      <a class="btn map" href="https://www.google.com/maps/search/?api=1&amp;query=%ED%86%A0%EC%86%8D%EC%B4%8C%20%EC%82%BC%EA%B3%84%ED%83%95" target="_blank" rel="noopener">Google Maps</a>
+    </div>
+  </div>
+</article>
+<article class="card" style="--c:#C24C3A">
+  <div class="ph">
+    <img loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/place-photos/AJRVUZPEIgZLT5eDj1WX9MYlLVr82Z4GX-w581FG65uPUSG2XlsV1lk7NvUwVSNqbF5DM-Wa3BCEodMkVMovISgZtLiele0vqStqTVj2mv9te4faZglAXYij91M6GVaE1RExVrEk55JMcedCnU67=s4800-w800-h600" alt="Geumdwaeji Sikdang"
+         onerror="this.closest('.ph').classList.add('noimg')">
+    <span class="ph-fallback">금돼지식당</span>
+    <span class="rt">★ 4.3</span>
+    <span class="dish">BBQ thịt heo</span>
+  </div>
+  <div class="bd">
+    <h3>Geumdwaeji Sikdang <span class="kr">금돼지식당</span></h3>
+    <p class="tip">BBQ heo nổi tiếng nhất Seoul — ba chỉ &amp; cổ heo chất lượng cao, nhân viên nướng giúp. Quét QR xếp hàng.</p>
+    <p class="meta">149 Dasan-ro, Jung-gu · 다산로 149</p>
+    <p class="meta hr">11:30–23:00 · ~30.000₩</p>
+    <div class="copy">Naver: <b>금돼지식당</b></div>
+    <div class="btns">
+      <a class="btn nav" href="https://map.naver.com/p/search/%EA%B8%88%EB%8F%BC%EC%A7%80%EC%8B%9D%EB%8B%B9" target="_blank" rel="noopener">Mở Naver</a>
+      <a class="btn map" href="https://www.google.com/maps/search/?api=1&amp;query=%EA%B8%88%EB%8F%BC%EC%A7%80%EC%8B%9D%EB%8B%B9" target="_blank" rel="noopener">Google Maps</a>
+    </div>
+  </div>
+</article>
+<article class="card" style="--c:#C24C3A">
+  <div class="ph">
+    <img loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/place-photos/AJRVUZO-lKa-t_na7s4sU_0RriQtdLv-uyCLswUlcKskBIayBle5ZI54IJRz291xEUW0PlMW3y9RHdUVOTTz3GosseYytU9epvJUVIZw3zu_dcsyrpiF6kiUd0sRGKfsGBMGEJM0OXj7jXGhkusmVLQ=s4800-w800-h600" alt="Odarijip Ganjang Gejang"
+         onerror="this.closest('.ph').classList.add('noimg')">
+    <span class="ph-fallback">오다리집 간장게장</span>
+    <span class="rt">★ 4.9</span>
+    <span class="dish">Ghẹ ngâm tương</span>
+  </div>
+  <div class="bd">
+    <h3>Odarijip Ganjang Gejang <span class="kr">오다리집 간장게장</span></h3>
+    <p class="tip">Ghẹ &amp; tôm ngâm tương trứ danh ở Myeongdong, gạch ghẹ béo ăn cùng cơm nóng. Nên đặt bàn trước.</p>
+    <p class="meta">10 Myeongdong 8na-gil, Jung-gu · 명동8나길 10</p>
+    <p class="meta hr">08:00–23:55 · ~40.000₩</p>
+    <div class="copy">Naver: <b>오다리집 간장게장</b></div>
+    <div class="btns">
+      <a class="btn nav" href="https://map.naver.com/p/search/%EC%98%A4%EB%8B%A4%EB%A6%AC%EC%A7%91%20%EA%B0%84%EC%9E%A5%EA%B2%8C%EC%9E%A5" target="_blank" rel="noopener">Mở Naver</a>
+      <a class="btn map" href="https://www.google.com/maps/search/?api=1&amp;query=%EC%98%A4%EB%8B%A4%EB%A6%AC%EC%A7%91%20%EA%B0%84%EC%9E%A5%EA%B2%8C%EC%9E%A5" target="_blank" rel="noopener">Google Maps</a>
+    </div>
+  </div>
+</article>
+<article class="card" style="--c:#C24C3A">
+  <div class="ph">
+    <img loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/place-photos/AJRVUZPik_HCFdLd1gZBVmpJbjqPF5KgCep7-XiIrA1c3wDyP8vv-bqadGQqjyEzsZj8YS0KAZuBQP2OBQgtR95vFR3gnv58c6QeIaDTsZMszQE6TPEOY28MFCVkIfP1jy3P9sHPGx6UkvAz81e-xQlG1a9QKQ=s4800-w800-h600" alt="Yoogane Dakgalbi (Dongdaemun)"
+         onerror="this.closest('.ph').classList.add('noimg')">
+    <span class="ph-fallback">유가네 닭갈비 동대문점</span>
+    <span class="rt">★ 4.9</span>
+    <span class="dish">Gà xào cay</span>
+  </div>
+  <div class="bd">
+    <h3>Yoogane Dakgalbi (Dongdaemun) <span class="kr">유가네 닭갈비 동대문점</span></h3>
+    <p class="tip">Gà xào cay trộn phô mai + cơm rang. Mở tới 1:30 sáng — hợp ăn khuya sau khi về từ Daejeon.</p>
+    <p class="meta">B1, 9 Eulji-ro 43-gil, Jung-gu · 을지로43길 9 B1</p>
+    <p class="meta hr">11:00–01:30 · ~14.000₩</p>
+    <div class="copy">Naver: <b>유가네 닭갈비 동대문점</b></div>
+    <div class="btns">
+      <a class="btn nav" href="https://map.naver.com/p/search/%EC%9C%A0%EA%B0%80%EB%84%A4%20%EB%8B%AD%EA%B0%88%EB%B9%84%20%EB%8F%99%EB%8C%80%EB%AC%B8%EC%A0%90" target="_blank" rel="noopener">Mở Naver</a>
+      <a class="btn map" href="https://www.google.com/maps/search/?api=1&amp;query=%EC%9C%A0%EA%B0%80%EB%84%A4%20%EB%8B%AD%EA%B0%88%EB%B9%84%20%EB%8F%99%EB%8C%80%EB%AC%B8%EC%A0%90" target="_blank" rel="noopener">Google Maps</a>
+    </div>
+  </div>
+</article>
+<article class="card" style="--c:#C24C3A">
+  <div class="ph">
+    <img loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/place-photos/AJRVUZN9M5gGZHzdkAB7AdW_WIKIRJdjJVPrk_haoPLihCeZBB-CN5tiQsA5aSmExDp1PBRGZIBvKEQSj92L33EvR103VslUjLTVPiny-YN0JwjOURpshN4JszlF-RPwtiviTNq36TaX0rcKihS8yPs=s4800-w800-h600" alt="Eulji Myeonok"
+         onerror="this.closest('.ph').classList.add('noimg')">
+    <span class="ph-fallback">을지면옥</span>
+    <span class="rt">★ 4.2</span>
+    <span class="dish">Mì lạnh naengmyeon</span>
+  </div>
+  <div class="bd">
+    <h3>Eulji Myeonok <span class="kr">을지면옥</span></h3>
+    <p class="tip">Mì lạnh kiều mạch kiểu Bình Nhưỡng, nước dùng trong thanh — món giải nhiệt số 1 mùa hè.</p>
+    <p class="meta">12 Samil-daero 30-gil, Jongno-gu · 삼일대로30길 12</p>
+    <p class="meta hr">11:00–20:30 · đóng CN · ~14.000₩</p>
+    <div class="copy">Naver: <b>을지면옥</b></div>
+    <div class="btns">
+      <a class="btn nav" href="https://map.naver.com/p/search/%EC%9D%84%EC%A7%80%EB%A9%B4%EC%98%A5" target="_blank" rel="noopener">Mở Naver</a>
+      <a class="btn map" href="https://www.google.com/maps/search/?api=1&amp;query=%EC%9D%84%EC%A7%80%EB%A9%B4%EC%98%A5" target="_blank" rel="noopener">Google Maps</a>
+    </div>
+  </div>
+</article>
+<article class="card" style="--c:#C24C3A">
+  <div class="ph">
+    <img loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/place-photos/AJRVUZMLq6giEh_E7j5c7-z5zxiH_AD1okbTvs_5wcungsiHZoMju_BmmnYleRiwNFniw91gReM0gkvYb3uvBixMp-OV-3Mt0yr-Fwn53BnPJpEediQUIIlrDiClzf5gZDkilYOFfuwHfEeRfs834jMLoCKTBw=s4800-w800-h600" alt="Imun Seolnongtang"
+         onerror="this.closest('.ph').classList.add('noimg')">
+    <span class="ph-fallback">이문설농탕</span>
+    <span class="rt">★ 4.0</span>
+    <span class="dish">Canh xương bò</span>
+  </div>
+  <div class="bd">
+    <h3>Imun Seolnongtang <span class="kr">이문설농탕</span></h3>
+    <p class="tip">Quán lâu đời nhất Seoul (từ 1904), canh xương bò trong, ấm bụng — bữa sáng kiểu Hàn chuẩn vị.</p>
+    <p class="meta">38-13 Ujeongguk-ro, Jongno-gu · 우정국로 38-13</p>
+    <p class="meta hr">08:00–21:00 · ~13.000₩</p>
+    <div class="copy">Naver: <b>이문설농탕</b></div>
+    <div class="btns">
+      <a class="btn nav" href="https://map.naver.com/p/search/%EC%9D%B4%EB%AC%B8%EC%84%A4%EB%86%8D%ED%83%95" target="_blank" rel="noopener">Mở Naver</a>
+      <a class="btn map" href="https://www.google.com/maps/search/?api=1&amp;query=%EC%9D%B4%EB%AC%B8%EC%84%A4%EB%86%8D%ED%83%95" target="_blank" rel="noopener">Google Maps</a>
+    </div>
+  </div>
+</article>
+<article class="card" style="--c:#C24C3A">
+  <div class="ph">
+    <img loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/place-photos/AJRVUZMYJs6FEm6wHFfflihayLiqmvD3BzNck2vl8gKUUp_Xs3tjFCVUG4YvlQU_492er3eGX0kKDk1OsLeYAu_fCBchOcNXLdfOLuqAsDPqZw2GR8pM9tUQOI42LQe158c0M0OHRWyF6CBzBUCFmxY=s4800-w800-h600" alt="Namhae Gulgukbap"
+         onerror="this.closest('.ph').classList.add('noimg')">
+    <span class="ph-fallback">남해굴국밥</span>
+    <span class="rt">★ 4.3</span>
+    <span class="dish">Canh hàu gukbap</span>
+  </div>
+  <div class="bd">
+    <h3>Namhae Gulgukbap <span class="kr">남해굴국밥</span></h3>
+    <p class="tip">Canh cơm hàu ~10k, mở từ 5h sáng, toàn dân địa phương — bữa sáng Hàn ngon-bổ-rẻ.</p>
+    <p class="meta">11 Jong-ro 46-gil, Jongno-gu · 종로46길 11</p>
+    <p class="meta hr">05:00–22:00 · đóng CN · ~10.000₩</p>
+    <div class="copy">Naver: <b>남해굴국밥</b></div>
+    <div class="btns">
+      <a class="btn nav" href="https://map.naver.com/p/search/%EB%82%A8%ED%95%B4%EA%B5%B4%EA%B5%AD%EB%B0%A5" target="_blank" rel="noopener">Mở Naver</a>
+      <a class="btn map" href="https://www.google.com/maps/search/?api=1&amp;query=%EB%82%A8%ED%95%B4%EA%B5%B4%EA%B5%AD%EB%B0%A5" target="_blank" rel="noopener">Google Maps</a>
+    </div>
+  </div>
+</article>
+<article class="card" style="--c:#C24C3A">
+  <div class="ph">
+    <img loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/place-photos/AJRVUZPwRPjxJpiVKGoqVIQOSynETWZG2kCkKjzYttPPEnmO0n-HChFoVrOxnYQii2wDUyc2mP1_GVBXw-wZ0WIgo_Tsvh99qMJ99Va-GKmsmlGtOPmiAnMpXi_Pl9taHnKtsR_PMCWw_pRNE3sEcA=s4800-w800-h600" alt="Majeonteo"
+         onerror="this.closest('.ph').classList.add('noimg')">
+    <span class="ph-fallback">마전터</span>
+    <span class="rt">★ 4.3</span>
+    <span class="dish">Ghẹ ngâm tương</span>
+  </div>
+  <div class="bd">
+    <h3>Majeonteo <span class="kr">마전터</span></h3>
+    <p class="tip">GẦN khách sạn. Cơm nhà Hàn giá tốt, set ghẹ/tôm ngâm tương buổi trưa rất đáng. Banchan ngon.</p>
+    <p class="meta">82-2 Hyehwa-ro, Seongbuk-gu · 혜화로 82-2</p>
+    <p class="meta hr">08:00–21:30 · ~18.000₩</p>
+    <div class="copy">Naver: <b>마전터</b></div>
+    <div class="btns">
+      <a class="btn nav" href="https://map.naver.com/p/search/%EB%A7%88%EC%A0%84%ED%84%B0" target="_blank" rel="noopener">Mở Naver</a>
+      <a class="btn map" href="https://www.google.com/maps/search/?api=1&amp;query=%EB%A7%88%EC%A0%84%ED%84%B0" target="_blank" rel="noopener">Google Maps</a>
+    </div>
+  </div>
+</article></div>
+</section>
+<section class="sec" id="sec-market">
+  <div class="sec-head" style="--c:#D98A2B"><span class="dot"></span><h2>Chợ &amp; street food</h2></div>
+  <div class="grid"><article class="card" style="--c:#D98A2B">
+  <div class="ph">
+    <img loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/place-photos/AJRVUZM8_VL7qzTfs052FdeW9RO5pBf3Em-WhoYcrY_KBhlW7BDZJe_XA3rn_t8Aq9T9WyZJJAWUuOHhitA6POYL_Nok73Y7HK5lbEPdUob9XStqaTfjTN8G36RwLnJb77FnxQHNwgynk5rLJnwjV9w=s4800-w800-h600" alt="Chợ Gwangjang"
+         onerror="this.closest('.ph').classList.add('noimg')">
+    <span class="ph-fallback">광장시장</span>
+    <span class="rt">★ 4.2</span>
+    
+  </div>
+  <div class="bd">
+    <h3>Chợ Gwangjang <span class="kr">광장시장</span></h3>
+    <p class="tip">Thiên đường street food: bindaetteok (bánh đậu xanh chiên), mayak gimbap, yukhoe (bò sống). ~20.000₩/2 người.</p>
+    <p class="meta">88 Cheonggyecheon-ro, Jongno-gu · 청계천로 88</p>
+    <p class="meta hr">09:00–22:30</p>
+    <div class="copy">Naver: <b>광장시장</b></div>
+    <div class="btns">
+      <a class="btn nav" href="https://map.naver.com/p/search/%EA%B4%91%EC%9E%A5%EC%8B%9C%EC%9E%A5" target="_blank" rel="noopener">Mở Naver</a>
+      <a class="btn map" href="https://www.google.com/maps/search/?api=1&amp;query=%EA%B4%91%EC%9E%A5%EC%8B%9C%EC%9E%A5" target="_blank" rel="noopener">Google Maps</a>
+    </div>
+  </div>
+</article>
+<article class="card" style="--c:#D98A2B">
+  <div class="ph">
+    <img loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/place-photos/AJRVUZOGo3otEywo_c21BaA_S30A16TcGhaEeOV9xrRVPK7SfNS3sYG9q56qvYQwCCRdLrZsQtwp6sf49njRBogHkonIZP25nUKG2qDmUrg7_weU7XkxC183PMOy3AQ3FxetSrmQJwsGMclwMiQfvA=s4800-w800-h600" alt="Chợ đêm Myeongdong"
+         onerror="this.closest('.ph').classList.add('noimg')">
+    <span class="ph-fallback">명동</span>
+    <span class="rt">★ 4.4</span>
+    
+  </div>
+  <div class="bd">
+    <h3>Chợ đêm Myeongdong <span class="kr">명동</span></h3>
+    <p class="tip">Phố mua sắm + mỹ phẩm + street food: tteokbokki, tôm hùm nướng phô mai, kẹo hồ lô, kem cuộn.</p>
+    <p class="meta">Myeong-dong, Jung-gu · 명동</p>
+    <p class="meta hr">Quầy ăn ~17:00–24:00</p>
+    <div class="copy">Naver: <b>명동</b></div>
+    <div class="btns">
+      <a class="btn nav" href="https://map.naver.com/p/search/%EB%AA%85%EB%8F%99" target="_blank" rel="noopener">Mở Naver</a>
+      <a class="btn map" href="https://www.google.com/maps/search/?api=1&amp;query=%EB%AA%85%EB%8F%99" target="_blank" rel="noopener">Google Maps</a>
+    </div>
+  </div>
+</article></div>
+</section>
+<section class="sec" id="sec-daejeon">
+  <div class="sec-head" style="--c:#2F7D5B"><span class="dot"></span><h2>Daejeon (xem MSI)</h2></div>
+  <div class="grid"><article class="card" style="--c:#2F7D5B">
+  <div class="ph">
+    <img loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/place-photos/AJRVUZNSNLYph8DBVer9QJwb-Bf2-kVUVo8VHyCidzZAOIv6t26XLPYeA-NNItoJcQHMlYHb2WdoKKIBgniYFZIARJ02S2-_iDPJoy_nrp1zYtpGlwpiK5h0_l7RfwN5eFs0Sg5Jd-eOfE2fl-ztDA=s4800-w800-h600" alt="Sungsimdang"
+         onerror="this.closest('.ph').classList.add('noimg')">
+    <span class="ph-fallback">성심당</span>
+    <span class="rt">★ 4.5</span>
+    <span class="dish">Tiệm bánh huyền thoại</span>
+  </div>
+  <div class="bd">
+    <h3>Sungsimdang <span class="kr">성심당</span></h3>
+    <p class="tip">BẮT BUỘC thử ở Daejeon — Michelin Guide. Soboro đậu đỏ &amp; cà ri croquette. Có chi nhánh ngay ga Daejeon.</p>
+    <p class="meta">15 Daejong-ro 480beon-gil, Jung-gu · 대종로480번길 15</p>
+    <p class="meta hr">08:00–22:00 · ~13.000₩</p>
+    <div class="copy">Naver: <b>성심당</b></div>
+    <div class="btns">
+      <a class="btn nav" href="https://map.naver.com/p/search/%EC%84%B1%EC%8B%AC%EB%8B%B9" target="_blank" rel="noopener">Mở Naver</a>
+      <a class="btn map" href="https://www.google.com/maps/search/?api=1&amp;query=%EC%84%B1%EC%8B%AC%EB%8B%B9" target="_blank" rel="noopener">Google Maps</a>
+    </div>
+  </div>
+</article>
+<article class="card" style="--c:#2F7D5B">
+  <div class="ph">
+    <img loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/place-photos/AJRVUZPnSpJSDJLBUTJ0NPRP9mrItGK9BrWz5Yq2JjxblIfpCt9-TVxC9VnBdbB3ez6CahftKldmAS2HkjMwyJMDAZUZVSf0zKh8nVxYCLeSbaJDHPdaC9Q5ZIOMvGetucRH8N1L74UGLxocy-WIjIQ=s4800-w800-h600" alt="Wonjo Dwitgogi"
+         onerror="this.closest('.ph').classList.add('noimg')">
+    <span class="ph-fallback">원조 뒷고기</span>
+    <span class="rt">★ 4.3</span>
+    <span class="dish">BBQ má heo</span>
+  </div>
+  <div class="bd">
+    <h3>Wonjo Dwitgogi <span class="kr">원조 뒷고기</span></h3>
+    <p class="tip">BBQ má heo nướng than khu Yuseong, gần venue MSI, dân địa phương mê. Giá mềm, banchan đầy đặn.</p>
+    <p class="meta">41 Jangdae-ro, Yuseong-gu · 장대로 41</p>
+    <p class="meta hr">11:00–21:00 · ~18.000₩</p>
+    <div class="copy">Naver: <b>원조 뒷고기</b></div>
+    <div class="btns">
+      <a class="btn nav" href="https://map.naver.com/p/search/%EC%9B%90%EC%A1%B0%20%EB%92%B7%EA%B3%A0%EA%B8%B0" target="_blank" rel="noopener">Mở Naver</a>
+      <a class="btn map" href="https://www.google.com/maps/search/?api=1&amp;query=%EC%9B%90%EC%A1%B0%20%EB%92%B7%EA%B3%A0%EA%B8%B0" target="_blank" rel="noopener">Google Maps</a>
+    </div>
+  </div>
+</article>
+<article class="card" style="--c:#2F7D5B">
+  <div class="ph">
+    <img loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/place-photos/AJRVUZNLlcfdAtqZePsJax0k8aXZoYWc9q3XUYwwQP17I4hVhRcKaKgCCKVZRjkYJYa1hNjmqwke6ria9RsDKOuwfYmdPrH7nE3FmUNooH_eW8noTkM2C2xfyZeeTHogChBlIu5txgIK5hqNYyHs_g=s4800-w800-h600" alt="Cafe BlessRoll"
+         onerror="this.closest('.ph').classList.add('noimg')">
+    <span class="ph-fallback">블레스롤</span>
+    <span class="rt">★ 4.6</span>
+    <span class="dish">Dessert cafe</span>
+  </div>
+  <div class="bd">
+    <h3>Cafe BlessRoll <span class="kr">블레스롤</span></h3>
+    <p class="tip">Tiệm bánh &amp; cà phê khởi nguồn Daejeon, bánh kem cầu vồng &amp; kem tươi nổi tiếng. Khu Yuseong, mở tới khuya.</p>
+    <p class="meta">668-2 Bongmyeong-dong, Yuseong-gu · 봉명동 668-2</p>
+    <p class="meta hr">09:00–24:00 · ~10.000₩</p>
+    <div class="copy">Naver: <b>블레스롤</b></div>
+    <div class="btns">
+      <a class="btn nav" href="https://map.naver.com/p/search/%EB%B8%94%EB%A0%88%EC%8A%A4%EB%A1%A4" target="_blank" rel="noopener">Mở Naver</a>
+      <a class="btn map" href="https://www.google.com/maps/search/?api=1&amp;query=%EB%B8%94%EB%A0%88%EC%8A%A4%EB%A1%A4" target="_blank" rel="noopener">Google Maps</a>
+    </div>
+  </div>
+</article></div>
+</section>
+
+  <section class="budget">
+    <h2>Ngân sách ăn uống · /người</h2>
+    <p class="sm">Tỷ giá tham khảo 1.000₩ ≈ 17.500₫ · giá ước tính trung bình, đổi theo menu.</p>
+    <table>
+      <tr><th>Ngày</th><th>KRW</th><th>VND (~)</th></tr>
+      <tr><td>10/7</td><td>68.000₩</td><td>1.190.000₫</td></tr>
+<tr><td>11/7</td><td>49.000₩</td><td>858.000₫</td></tr>
+<tr><td>12/7</td><td>45.000₩</td><td>788.000₫</td></tr>
+<tr><td>13/7</td><td>65.000₩</td><td>1.138.000₫</td></tr>
+<tr><td>14/7</td><td>60.000₩</td><td>1.050.000₫</td></tr>
+<tr><td>15/7</td><td>14.000₩</td><td>245.000₫</td></tr>
+      <tr class="total"><td>Tổng</td><td>~301.000₩</td><td>~5.270.000₫</td></tr>
+    </table>
+    <div class="other">
+      <b>Các khoản khác (ngoài ăn uống):</b><br>
+      • KTX Seoul ⇄ Daejeon: ~47.000₩ &nbsp;•&nbsp; Khách sạn Daejeon 1 đêm: ~70.000–120.000₩<br>
+      • Vé cung điện: ~11.000₩ (Gyeongbokgung + Changdeokgung + Huwon) &nbsp;•&nbsp; N Seoul Tower: ~21.000₩<br>
+      • Thuê hanbok (tùy chọn): ~15.000–25.000₩ &nbsp;•&nbsp; Metro T-money cả chuyến: ~30.000–40.000₩
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="love">서울에서 — chúc cả nhóm một chuyến thật vui!</div>
+  <p>Mang ô (giữa tháng 7 mùa mưa, nóng ẩm 28–32°C) · Gyeongbokgung đóng T3 · Changdeokgung đóng T2 · Suyeonsanbang đóng T2&amp;T3 · Eulji Myeonok &amp; Namhae đóng CN.</p>
+</footer>
+
+<script>
+// subtle scroll reveal (respects reduced motion)
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const io=new IntersectionObserver((es)=>{es.forEach(x=>{if(x.isIntersecting){x.target.style.opacity=1;x.target.style.transform='none';io.unobserve(x.target)}})},{threshold:.08});
+  document.querySelectorAll('.card,.ticket').forEach(el=>{el.style.opacity=0;el.style.transform='translateY(14px)';el.style.transition='opacity .5s ease, transform .5s ease';io.observe(el)});
+}
+</script>
+
+<script>
+(function(){
+  var ROUTE = {"1": {"color": "#7A5EA6", "stops": [{"n": "Khách sạn", "t": "Xuất phát", "kr": "", "lat": 37.5859, "lng": 127.0185}, {"n": "Majeonteo", "t": "Trưa · ghẹ ngâm tương", "kr": "마전터", "lat": 37.5926314, "lng": 126.9986587}, {"n": "Suyeonsanbang", "t": "Cà phê · nhà trà hanok", "kr": "수연산방", "lat": 37.5950949, "lng": 126.9947997}, {"n": "Làng bích họa Ihwa", "t": "Chiều · hoàng hôn", "kr": "이화벽화마을", "lat": 37.5779788, "lng": 127.0071915}, {"n": "Geumdwaeji Sikdang", "t": "Tối · BBQ heo", "kr": "금돼지식당", "lat": 37.5570994, "lng": 127.0116712}]}, "2": {"color": "#C24C3A", "stops": [{"n": "Imun Seolnongtang", "t": "Sáng · canh xương bò", "kr": "이문설농탕", "lat": 37.5726592, "lng": 126.9839377}, {"n": "Gyeongbokgung", "t": "09:30 · cung điện", "kr": "경복궁", "lat": 37.579617, "lng": 126.977041}, {"n": "Tosokchon Samgyetang", "t": "Trưa · gà hầm sâm", "kr": "토속촌 삼계탕", "lat": 37.5777786, "lng": 126.9715909}, {"n": "Làng Hanok Bukchon", "t": "14:00 · chụp ảnh", "kr": "북촌한옥마을", "lat": 37.5814696, "lng": 126.9849519}, {"n": "Hanok Langsom Ikseon", "t": "Cà phê chiều", "kr": "한옥랑썸 익선", "lat": 37.5731833, "lng": 126.9898614}, {"n": "Chợ Gwangjang", "t": "Tối · street food", "kr": "광장시장", "lat": 37.5700398, "lng": 126.9996036}]}, "3": {"color": "#3E8E84", "stops": [{"n": "Namhae Gulgukbap", "t": "Sáng · canh hàu", "kr": "남해굴국밥", "lat": 37.5709932, "lng": 127.0108431}, {"n": "Changdeokgung", "t": "09:30 · cung điện", "kr": "창덕궁", "lat": 37.5794309, "lng": 126.9910426}, {"n": "Eulji Myeonok", "t": "Trưa · mì lạnh", "kr": "을지면옥", "lat": 37.5736809, "lng": 126.9885769}, {"n": "Cafe Onion Seongsu", "t": "Cà phê · Seongsu", "kr": "어니언 성수", "lat": 37.5447328, "lng": 127.0582091}, {"n": "Highline Seongsu", "t": "Cà phê", "kr": "하이라인 성수", "lat": 37.5389944, "lng": 127.0499414}, {"n": "N Seoul Tower", "t": "Hoàng hôn · view đêm", "kr": "N서울타워", "lat": 37.5511694, "lng": 126.9882266}, {"n": "Chợ đêm Myeongdong", "t": "Tối · street food", "kr": "명동", "lat": 37.5616685, "lng": 126.9858438}]}};
+  var el=document.getElementById('map');
+  if(typeof L==='undefined'){el.innerHTML='<p style=\"padding:20px;color:#766\">Không tải được bản đồ — cần kết nối mạng khi mở file.</p>';return;}
+  var map=L.map('map',{scrollWheelZoom:false}).setView([37.575,126.99],13);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(map);
+  var layer=L.layerGroup().addTo(map);
+  function nav(kr){return 'https://map.naver.com/p/search/'+encodeURIComponent(kr);}
+  function show(d){
+    layer.clearLayers();
+    var day=ROUTE[d], pts=[];
+    day.stops.forEach(function(s,i){
+      pts.push([s.lat,s.lng]);
+      var icon=L.divIcon({className:'',html:'<div class=\"pin\" style=\"background:'+day.color+'\">'+(i+1)+'</div>',iconSize:[26,26],iconAnchor:[13,13]});
+      var krhtml=s.kr?'<br><span class=\"pk\">'+s.kr+'</span> &middot; <a href=\"'+nav(s.kr)+'\" target=\"_blank\" rel=\"noopener\">Mở Naver</a>':'';
+      L.marker([s.lat,s.lng],{icon:icon}).addTo(layer).bindPopup('<b>'+(i+1)+'. '+s.n+'</b><br>'+s.t+krhtml);
+    });
+    L.polyline(pts,{color:day.color,weight:3,opacity:.75,dashArray:'2,7'}).addTo(layer);
+    map.fitBounds(pts,{padding:[42,42]});
+    var o=pts[0], dn=pts[pts.length-1], wp=pts.slice(1,-1).map(function(p){return p[0]+','+p[1];}).join('|');
+    document.getElementById('openroute').href='https://www.google.com/maps/dir/?api=1&origin='+o[0]+','+o[1]+'&destination='+dn[0]+','+dn[1]+(wp?'&waypoints='+encodeURIComponent(wp):'')+'&travelmode=transit';
+  }
+  var seg=document.getElementById('dayseg');
+  seg.addEventListener('click',function(ev){
+    var b=ev.target.closest('button'); if(!b)return;
+    Array.prototype.forEach.call(seg.children,function(x){x.classList.remove('on');x.style.background='';});
+    var d=b.getAttribute('data-d');
+    b.classList.add('on'); b.style.background=ROUTE[d].color;
+    show(d);
+  });
+  seg.children[0].style.background=ROUTE['1'].color;
+  setTimeout(function(){map.invalidateSize();show('1');},60);
+})();
+</script>
+
+</body>
+</html>
