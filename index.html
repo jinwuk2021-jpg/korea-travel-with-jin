@@ -148,6 +148,37 @@ footer .love{font-family:'Unbounded';font-weight:600;color:var(--persimmon);font
 .leaflet-popup-content a{color:var(--persimmon);font-weight:700;text-decoration:none}
 .maptip{font-size:12.5px;color:var(--muted);margin:10px 2px 0}
 
+/* ---------- TABS ---------- */
+.tabbar{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:4px 0 24px}
+.tabbtn{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:#fff;
+  color:var(--muted);font-family:inherit;font-weight:800;font-size:14.5px;padding:11px 20px;
+  border-radius:999px;cursor:pointer;transition:color .2s,background .2s,border-color .2s,box-shadow .2s}
+.tabbtn .em{font-size:17px}
+.tabbtn.on{background:var(--persimmon);color:#fff;border-color:transparent;box-shadow:0 6px 16px rgba(232,98,58,.28)}
+@media(hover:hover){.tabbtn:not(.on):hover{border-color:var(--persimmon);color:var(--persimmon)}}
+.tabpane[hidden]{display:none}
+
+/* ---------- DISH SHEET ---------- */
+.dish-intro{max-width:760px;margin:2px auto 24px;text-align:center;color:var(--muted);font-size:14.5px}
+.dish-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
+.dcard{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;
+  display:flex;flex-direction:column;box-shadow:0 6px 18px rgba(30,20,50,.06)}
+.dcard .dhead{display:flex;align-items:center;gap:11px;padding:13px 15px;background:var(--c);color:#fff}
+.dcard .dhead .em{font-size:25px;line-height:1}
+.dcard .dhead h3{margin:0;font-size:16px;font-weight:800;line-height:1.2}
+.dcard .dhead h3 .kr{display:block;font-weight:500;font-size:12.5px;opacity:.92;margin-top:1px}
+.dcard .ddesc{padding:11px 15px 3px;font-size:13px;color:#4b4358;margin:0}
+.dcard ul.spots{list-style:none;margin:0;padding:9px 15px 15px;display:grid;gap:9px}
+.dcard ul.spots li{display:flex;align-items:flex-start;gap:10px;border-top:1px dashed var(--line);padding-top:9px}
+.dcard ul.spots li:first-child{border-top:0;padding-top:3px}
+.spot-info{flex:1;min-width:0}
+.spot-name{font-weight:700;font-size:13.5px;color:var(--ink)}
+.spot-name .kr{font-weight:500;color:var(--muted);font-size:12px}
+.spot-area{display:block;color:var(--muted);font-size:12px;margin-top:1px}
+.spot-go{flex:0 0 auto;align-self:center;text-decoration:none;font-size:12px;font-weight:700;
+  color:#fff;background:var(--c);padding:6px 11px;border-radius:8px;white-space:nowrap}
+@media(hover:hover){.spot-go:hover{filter:brightness(1.06)}}
+
 </style>
 </head>
 <body>
@@ -167,6 +198,12 @@ footer .love{font-family:'Unbounded';font-weight:600;color:var(--persimmon);font
 </header>
 
 <main class="wrap">
+  <div class="tabbar" id="tabbar">
+    <button class="tabbtn on" data-tab="trip"><span class="em">🗺️</span> Hành trình &amp; địa điểm</button>
+    <button class="tabbtn" data-tab="dish"><span class="em">🍲</span> Món ăn Hàn truyền thống</button>
+  </div>
+
+  <div class="tabpane" id="tab-trip">
   <p class="lead">Bấm <b>“Mở Naver”</b> ở mỗi địa điểm để xem ảnh, review &amp; chỉ đường — hoặc copy tên tiếng Hàn dán vào app Naver Map.</p>
 
   <p class="block-title">Hành trình</p>
@@ -885,12 +922,144 @@ footer .love{font-family:'Unbounded';font-weight:600;color:var(--persimmon);font
       • Thuê hanbok (tùy chọn): ~15.000–25.000₩ &nbsp;•&nbsp; Metro T-money cả chuyến: ~30.000–40.000₩
     </div>
   </section>
+  </div><!-- /tab-trip -->
+
+  <div class="tabpane" id="tab-dish" hidden>
+    <p class="block-title" style="margin-top:8px">Bản đồ ẩm thực</p>
+    <h2 class="block-sub">Món truyền thống Hàn &amp; quán làm ngon</h2>
+    <p class="dish-intro">Mỗi món là một thẻ — kèm <b>2–3 quán “đỉnh”</b> cho món đó (ưu tiên quán huyền thoại &amp; quán có trong lịch trình). Bấm <b>Naver</b> để xem ảnh, review &amp; chỉ đường.</p>
+    <div class="dish-grid">
+
+      <article class="dcard" style="--c:#C24C3A">
+        <div class="dhead"><span class="em">🐔</span><h3>Samgyetang — Gà hầm sâm <span class="kr">삼계탕</span></h3></div>
+        <p class="ddesc">Gà tơ nhồi cơm nếp + sâm + táo đỏ, hầm nước trong bổ dưỡng. Món “giải nhiệt bằng nhiệt” kinh điển mùa hè.</p>
+        <ul class="spots">
+          <li><div class="spot-info"><span class="spot-name">Tosokchon Samgyetang <span class="kr">토속촌 삼계탕</span></span><span class="spot-area">Jongno-gu · cạnh Gyeongbokgung · huyền thoại</span></div><a class="spot-go" href="https://map.naver.com/p/search/%ED%86%A0%EC%86%8D%EC%B4%8C%20%EC%82%BC%EA%B3%84%ED%83%95" target="_blank" rel="noopener">Naver</a></li>
+          <li><div class="spot-info"><span class="spot-name">Baekje Samgyetang <span class="kr">백제삼계탕</span></span><span class="spot-area">Myeongdong · quán lâu đời từ 1971</span></div><a class="spot-go" href="https://map.naver.com/p/search/%EB%B0%B1%EC%A0%9C%EC%82%BC%EA%B3%84%ED%83%95" target="_blank" rel="noopener">Naver</a></li>
+        </ul>
+      </article>
+
+      <article class="dcard" style="--c:#7A5EA6">
+        <div class="dhead"><span class="em">🥩</span><h3>Samgyeopsal — BBQ thịt heo <span class="kr">삼겹살</span></h3></div>
+        <p class="ddesc">Ba chỉ / cổ heo nướng than, cuốn lá tía tô + ssamjang. “Quốc dân” của dân nhậu Hàn.</p>
+        <ul class="spots">
+          <li><div class="spot-info"><span class="spot-name">Geumdwaeji Sikdang <span class="kr">금돼지식당</span></span><span class="spot-area">Jung-gu (Sindang) · ngon nhất Seoul</span></div><a class="spot-go" href="https://map.naver.com/p/search/%EA%B8%88%EB%8F%BC%EC%A7%80%EC%8B%9D%EB%8B%B9" target="_blank" rel="noopener">Naver</a></li>
+          <li><div class="spot-info"><span class="spot-name">Wonjo Dwitgogi <span class="kr">원조 뒷고기</span></span><span class="spot-area">Daejeon (Yuseong) · gần venue MSI</span></div><a class="spot-go" href="https://map.naver.com/p/search/%EC%9B%90%EC%A1%B0%20%EB%92%B7%EA%B3%A0%EA%B8%B0" target="_blank" rel="noopener">Naver</a></li>
+        </ul>
+      </article>
+
+      <article class="dcard" style="--c:#2F7D5B">
+        <div class="dhead"><span class="em">🔥</span><h3>Bulgogi &amp; Galbi — Bò nướng <span class="kr">불고기·갈비</span></h3></div>
+        <p class="ddesc">Bò thái mỏng ướp xì dầu ngọt (bulgogi) hoặc sườn bò nướng (galbi) — vị Hàn ai cũng mê.</p>
+        <ul class="spots">
+          <li><div class="spot-info"><span class="spot-name">Woo Lae Oak <span class="kr">우래옥</span></span><span class="spot-area">Jung-gu (Euljiro) · từ 1946 · bulgogi trứ danh</span></div><a class="spot-go" href="https://map.naver.com/p/search/%EC%9A%B0%EB%9E%98%EC%98%A5" target="_blank" rel="noopener">Naver</a></li>
+          <li><div class="spot-info"><span class="spot-name">Byeokje Galbi <span class="kr">벽제갈비</span></span><span class="spot-area">Songpa-gu · galbi cao cấp (Michelin)</span></div><a class="spot-go" href="https://map.naver.com/p/search/%EB%B2%BD%EC%A0%9C%EA%B0%88%EB%B9%84" target="_blank" rel="noopener">Naver</a></li>
+        </ul>
+      </article>
+
+      <article class="dcard" style="--c:#3E8E84">
+        <div class="dhead"><span class="em">🍜</span><h3>Naengmyeon — Mì lạnh <span class="kr">냉면</span></h3></div>
+        <p class="ddesc">Mì kiều mạch trong nước dùng lạnh kiểu Bình Nhưỡng (mul) hoặc trộn cay (bibim). Số 1 mùa hè.</p>
+        <ul class="spots">
+          <li><div class="spot-info"><span class="spot-name">Eulji Myeonok <span class="kr">을지면옥</span></span><span class="spot-area">Jongno-gu · nước dùng trong thanh</span></div><a class="spot-go" href="https://map.naver.com/p/search/%EC%9D%84%EC%A7%80%EB%A9%B4%EC%98%A5" target="_blank" rel="noopener">Naver</a></li>
+          <li><div class="spot-info"><span class="spot-name">Woo Lae Oak <span class="kr">우래옥</span></span><span class="spot-area">Jung-gu · pyongyang naengmyeon huyền thoại</span></div><a class="spot-go" href="https://map.naver.com/p/search/%EC%9A%B0%EB%9E%98%EC%98%A5" target="_blank" rel="noopener">Naver</a></li>
+        </ul>
+      </article>
+
+      <article class="dcard" style="--c:#D98A2B">
+        <div class="dhead"><span class="em">🍲</span><h3>Seolleongtang — Canh xương bò <span class="kr">설렁탕</span></h3></div>
+        <p class="ddesc">Canh xương bò ninh trắng sữa, ăn cùng cơm + hành lá. Bữa sáng ấm bụng kiểu Hàn.</p>
+        <ul class="spots">
+          <li><div class="spot-info"><span class="spot-name">Imun Seolnongtang <span class="kr">이문설농탕</span></span><span class="spot-area">Jongno-gu · quán cổ nhất Seoul (1904)</span></div><a class="spot-go" href="https://map.naver.com/p/search/%EC%9D%B4%EB%AC%B8%EC%84%A4%EB%86%8D%ED%83%95" target="_blank" rel="noopener">Naver</a></li>
+          <li><div class="spot-info"><span class="spot-name">Shin Seon Seolnongtang <span class="kr">신선설농탕</span></span><span class="spot-area">Chuỗi khắp Seoul · mở sớm, tiện</span></div><a class="spot-go" href="https://map.naver.com/p/search/%EC%8B%A0%EC%84%A0%EC%84%A4%EB%86%8D%ED%83%95" target="_blank" rel="noopener">Naver</a></li>
+        </ul>
+      </article>
+
+      <article class="dcard" style="--c:#C2417E">
+        <div class="dhead"><span class="em">🦀</span><h3>Ganjang Gejang — Ghẹ ngâm tương <span class="kr">간장게장</span></h3></div>
+        <p class="ddesc">Ghẹ sống ngâm xì dầu, gạch béo ngậy “ăn cắp cơm”. Đặc sản phải thử ở Seoul.</p>
+        <ul class="spots">
+          <li><div class="spot-info"><span class="spot-name">Odarijip <span class="kr">오다리집 간장게장</span></span><span class="spot-area">Myeongdong · gạch ghẹ đầy ụ</span></div><a class="spot-go" href="https://map.naver.com/p/search/%EC%98%A4%EB%8B%A4%EB%A6%AC%EC%A7%91%20%EA%B0%84%EC%9E%A5%EA%B2%8C%EC%9E%A5" target="_blank" rel="noopener">Naver</a></li>
+          <li><div class="spot-info"><span class="spot-name">Pro Ganjang Gejang <span class="kr">프로간장게장</span></span><span class="spot-area">Sinsa (Gangnam) · nổi tiếng nhất</span></div><a class="spot-go" href="https://map.naver.com/p/search/%ED%94%84%EB%A1%9C%EA%B0%84%EC%9E%A5%EA%B2%8C%EC%9E%A5" target="_blank" rel="noopener">Naver</a></li>
+          <li><div class="spot-info"><span class="spot-name">Majeonteo <span class="kr">마전터</span></span><span class="spot-area">Seongbuk · gần khách sạn · set trưa rẻ</span></div><a class="spot-go" href="https://map.naver.com/p/search/%EB%A7%88%EC%A0%84%ED%84%B0" target="_blank" rel="noopener">Naver</a></li>
+        </ul>
+      </article>
+
+      <article class="dcard" style="--c:#C24C3A">
+        <div class="dhead"><span class="em">🍗</span><h3>Dakhanmari — Gà hầm nguyên con <span class="kr">닭한마리</span></h3></div>
+        <p class="ddesc">Gà nguyên con hầm nước trong với tỏi + hành, chấm sốt, cuối nồi thả mì. Ấm áp, hợp đi nhóm.</p>
+        <ul class="spots">
+          <li><div class="spot-info"><span class="spot-name">Jinokhwa Halmae Dakhanmari <span class="kr">진옥화할매 원조닭한마리</span></span><span class="spot-area">Dongdaemun · cái nôi món dakhanmari</span></div><a class="spot-go" href="https://map.naver.com/p/search/%EC%A7%84%EC%98%A5%ED%99%94%ED%95%A0%EB%A7%A4%20%EC%9B%90%EC%A1%B0%EB%8B%AD%ED%95%9C%EB%A7%88%EB%A6%AC" target="_blank" rel="noopener">Naver</a></li>
+        </ul>
+      </article>
+
+      <article class="dcard" style="--c:#7A5EA6">
+        <div class="dhead"><span class="em">🥟</span><h3>Kalguksu &amp; Mandu — Mì bột &amp; há cảo <span class="kr">칼국수·만두</span></h3></div>
+        <p class="ddesc">Mì sợi thái tay trong nước dùng nóng, ăn kèm mandu (há cảo) &amp; kimchi tự gắp thả ga.</p>
+        <ul class="spots">
+          <li><div class="spot-info"><span class="spot-name">Myeongdong Gyoja <span class="kr">명동교자</span></span><span class="spot-area">Myeongdong · Michelin Bib · từ 1966</span></div><a class="spot-go" href="https://map.naver.com/p/search/%EB%AA%85%EB%8F%99%EA%B5%90%EC%9E%90" target="_blank" rel="noopener">Naver</a></li>
+        </ul>
+      </article>
+
+      <article class="dcard" style="--c:#2F7D5B">
+        <div class="dhead"><span class="em">🍚</span><h3>Bibimbap — Cơm trộn <span class="kr">비빔밥</span></h3></div>
+        <p class="ddesc">Cơm trộn rau + thịt + trứng + gochujang. Kiểu Jeonju (thố đá nóng) là chuẩn vị nhất.</p>
+        <ul class="spots">
+          <li><div class="spot-info"><span class="spot-name">Gogung <span class="kr">고궁 명동</span></span><span class="spot-area">Myeongdong · bibimbap Jeonju chính hiệu</span></div><a class="spot-go" href="https://map.naver.com/p/search/%EA%B3%A0%EA%B6%81%20%EB%AA%85%EB%8F%99" target="_blank" rel="noopener">Naver</a></li>
+          <li><div class="spot-info"><span class="spot-name">Mokmyeoksanbang <span class="kr">목멱산방</span></span><span class="spot-area">Namsan · bibimbap view núi, gần N Tower</span></div><a class="spot-go" href="https://map.naver.com/p/search/%EB%AA%A9%EB%A9%B1%EC%82%B0%EB%B0%A9" target="_blank" rel="noopener">Naver</a></li>
+        </ul>
+      </article>
+
+      <article class="dcard" style="--c:#3E8E84">
+        <div class="dhead"><span class="em">🐷</span><h3>Jokbal &amp; Bossam — Chân giò luộc <span class="kr">족발·보쌈</span></h3></div>
+        <p class="ddesc">Chân giò heo luộc xì dầu thái lát (jokbal) / thịt luộc cuốn kimchi (bossam). Mềm, thơm, đậm đà.</p>
+        <ul class="spots">
+          <li><div class="spot-info"><span class="spot-name">Manjok Ohyang Jokbal <span class="kr">만족오향족발</span></span><span class="spot-area">Seosomun (Jung-gu) · Michelin Bib</span></div><a class="spot-go" href="https://map.naver.com/p/search/%EB%A7%8C%EC%A1%B1%EC%98%A4%ED%96%A5%EC%A1%B1%EB%B0%9C" target="_blank" rel="noopener">Naver</a></li>
+        </ul>
+      </article>
+
+      <article class="dcard" style="--c:#D98A2B">
+        <div class="dhead"><span class="em">🥘</span><h3>Bindaetteok &amp; Jeon — Bánh chiên <span class="kr">빈대떡·전</span></h3></div>
+        <p class="ddesc">Bánh đậu xanh xay chiên giòn rụm, ăn nóng cùng makgeolli. Vị chợ truyền thống đúng điệu.</p>
+        <ul class="spots">
+          <li><div class="spot-info"><span class="spot-name">Sunhui-ne Bindaetteok <span class="kr">순희네빈대떡</span></span><span class="spot-area">Chợ Gwangjang · quầy nổi tiếng nhất</span></div><a class="spot-go" href="https://map.naver.com/p/search/%EC%88%9C%ED%9D%AC%EB%84%A4%EB%B9%88%EB%8C%80%EB%96%A1" target="_blank" rel="noopener">Naver</a></li>
+          <li><div class="spot-info"><span class="spot-name">Chợ Gwangjang <span class="kr">광장시장</span></span><span class="spot-area">Jongno-gu · thiên đường street food</span></div><a class="spot-go" href="https://map.naver.com/p/search/%EA%B4%91%EC%9E%A5%EC%8B%9C%EC%9E%A5" target="_blank" rel="noopener">Naver</a></li>
+        </ul>
+      </article>
+
+      <article class="dcard" style="--c:#C2417E">
+        <div class="dhead"><span class="em">🌶️</span><h3>Tteokbokki &amp; street food <span class="kr">떡볶이</span></h3></div>
+        <p class="ddesc">Bánh gạo sốt cay ngọt — món ăn đường phố quốc dân. Kèm mayak gimbap, sundae, twigim.</p>
+        <ul class="spots">
+          <li><div class="spot-info"><span class="spot-name">Chợ Gwangjang <span class="kr">광장시장</span></span><span class="spot-area">Jongno-gu · mayak gimbap + tteokbokki</span></div><a class="spot-go" href="https://map.naver.com/p/search/%EA%B4%91%EC%9E%A5%EC%8B%9C%EC%9E%A5" target="_blank" rel="noopener">Naver</a></li>
+          <li><div class="spot-info"><span class="spot-name">Chợ đêm Myeongdong <span class="kr">명동</span></span><span class="spot-area">Jung-gu · quầy street food buổi tối</span></div><a class="spot-go" href="https://map.naver.com/p/search/%EB%AA%85%EB%8F%99" target="_blank" rel="noopener">Naver</a></li>
+        </ul>
+      </article>
+
+    </div>
+  </div><!-- /tab-dish -->
 </main>
 
 <footer>
   <div class="love">서울에서 — chúc cả nhóm một chuyến thật vui!</div>
   <p>Mang ô (giữa tháng 7 mùa mưa, nóng ẩm 28–32°C) · Gyeongbokgung đóng T3 · Changdeokgung đóng T2 · Suyeonsanbang đóng T2&amp;T3 · Eulji Myeonok &amp; Namhae đóng CN.</p>
 </footer>
+
+<script>
+// tab switching (Hành trình ⇄ Món ăn Hàn)
+(function(){
+  var bar=document.getElementById('tabbar');
+  var panes={trip:document.getElementById('tab-trip'),dish:document.getElementById('tab-dish')};
+  bar.addEventListener('click',function(ev){
+    var b=ev.target.closest('.tabbtn'); if(!b)return;
+    var t=b.getAttribute('data-tab');
+    Array.prototype.forEach.call(bar.children,function(x){x.classList.toggle('on',x===b);});
+    for(var k in panes){panes[k].hidden=(k!==t);}
+    if(t==='trip'&&window._kmap){setTimeout(function(){window._kmap.invalidateSize();},30);}
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+})();
+</script>
 
 <script>
 // subtle scroll reveal (respects reduced motion)
@@ -906,6 +1075,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
   var el=document.getElementById('map');
   if(typeof L==='undefined'){el.innerHTML='<p style=\"padding:20px;color:#766\">Không tải được bản đồ — cần kết nối mạng khi mở file.</p>';return;}
   var map=L.map('map',{scrollWheelZoom:false}).setView([37.575,126.99],13);
+  window._kmap=map;
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(map);
   var layer=L.layerGroup().addTo(map);
   function nav(kr){return 'https://map.naver.com/p/search/'+encodeURIComponent(kr);}
