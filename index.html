@@ -179,6 +179,23 @@ footer .love{font-family:'Unbounded';font-weight:600;color:var(--persimmon);font
   color:#fff;background:var(--c);padding:6px 11px;border-radius:8px;white-space:nowrap}
 @media(hover:hover){.spot-go:hover{filter:brightness(1.06)}}
 
+/* ---------- DISH GALLERY (slide) ---------- */
+.dgalwrap{position:relative;background:#0000000d}
+.dgal{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.dgal::-webkit-scrollbar{display:none}
+.dslide{position:relative;flex:0 0 100%;width:100%;height:188px;scroll-snap-align:center;
+  background:linear-gradient(135deg,var(--c),#2a2140);overflow:hidden}
+.dslide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .35s}
+.dslide-lab{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  color:#fff;font-weight:700;font-size:21px;opacity:.85;letter-spacing:.02em}
+.dnav{position:absolute;top:50%;transform:translateY(-50%);width:31px;height:31px;border:0;
+  border-radius:50%;background:rgba(23,19,39,.5);color:#fff;font-size:19px;line-height:1;cursor:pointer;
+  display:none;align-items:center;justify-content:center;z-index:2;padding:0}
+.dnav.p{left:8px}.dnav.n{right:8px}
+.dgalcount{position:absolute;right:9px;bottom:8px;background:rgba(23,19,39,.62);color:#fff;
+  font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;z-index:2}
+@media(hover:hover){.dgalwrap:hover .dnav{display:flex}.dnav:hover{background:rgba(23,19,39,.82)}}
+
 </style>
 </head>
 <body>
@@ -932,6 +949,17 @@ footer .love{font-family:'Unbounded';font-weight:600;color:var(--persimmon);font
 
       <article class="dcard" style="--c:#C24C3A">
         <div class="dhead"><span class="em">🐔</span><h3>Samgyetang — Gà hầm sâm <span class="kr">삼계탕</span></h3></div>
+        <div class="dgalwrap">
+          <div class="dgal" aria-label="Ảnh món samgyetang">
+          <div class="dslide"><span class="dslide-lab kr">삼계탕</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/samgyetang?lock=1" alt="samgyetang 1" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">삼계탕</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/samgyetang?lock=2" alt="samgyetang 2" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">삼계탕</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/samgyetang?lock=3" alt="samgyetang 3" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">삼계탕</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/samgyetang?lock=4" alt="samgyetang 4" onerror="this.style.opacity=0"></div>
+          </div>
+          <button class="dnav p" type="button" aria-label="Ảnh trước">‹</button>
+          <button class="dnav n" type="button" aria-label="Ảnh sau">›</button>
+          <span class="dgalcount">1/4</span>
+        </div>
         <p class="ddesc">Gà tơ nhồi cơm nếp + sâm + táo đỏ, hầm nước trong bổ dưỡng. Món “giải nhiệt bằng nhiệt” kinh điển mùa hè.</p>
         <ul class="spots">
           <li><div class="spot-info"><span class="spot-name">Tosokchon Samgyetang <span class="kr">토속촌 삼계탕</span></span><span class="spot-area">Jongno-gu · cạnh Gyeongbokgung · huyền thoại</span></div><a class="spot-go" href="https://map.naver.com/p/search/%ED%86%A0%EC%86%8D%EC%B4%8C%20%EC%82%BC%EA%B3%84%ED%83%95" target="_blank" rel="noopener">Naver</a></li>
@@ -942,6 +970,17 @@ footer .love{font-family:'Unbounded';font-weight:600;color:var(--persimmon);font
 
       <article class="dcard" style="--c:#7A5EA6">
         <div class="dhead"><span class="em">🥩</span><h3>Samgyeopsal — BBQ thịt heo <span class="kr">삼겹살</span></h3></div>
+        <div class="dgalwrap">
+          <div class="dgal" aria-label="Ảnh món samgyeopsal">
+          <div class="dslide"><span class="dslide-lab kr">삼겹살</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/samgyeopsal?lock=1" alt="samgyeopsal 1" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">삼겹살</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/samgyeopsal?lock=2" alt="samgyeopsal 2" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">삼겹살</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/samgyeopsal?lock=3" alt="samgyeopsal 3" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">삼겹살</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/samgyeopsal?lock=4" alt="samgyeopsal 4" onerror="this.style.opacity=0"></div>
+          </div>
+          <button class="dnav p" type="button" aria-label="Ảnh trước">‹</button>
+          <button class="dnav n" type="button" aria-label="Ảnh sau">›</button>
+          <span class="dgalcount">1/4</span>
+        </div>
         <p class="ddesc">Ba chỉ / cổ heo nướng than, cuốn lá tía tô + ssamjang. “Quốc dân” của dân nhậu Hàn.</p>
         <ul class="spots">
           <li><div class="spot-info"><span class="spot-name">Geumdwaeji Sikdang <span class="kr">금돼지식당</span></span><span class="spot-area">Jung-gu (Sindang) · ngon nhất Seoul</span></div><a class="spot-go" href="https://map.naver.com/p/search/%EA%B8%88%EB%8F%BC%EC%A7%80%EC%8B%9D%EB%8B%B9" target="_blank" rel="noopener">Naver</a></li>
@@ -952,6 +991,17 @@ footer .love{font-family:'Unbounded';font-weight:600;color:var(--persimmon);font
 
       <article class="dcard" style="--c:#2F7D5B">
         <div class="dhead"><span class="em">🔥</span><h3>Bulgogi &amp; Galbi — Bò nướng <span class="kr">불고기·갈비</span></h3></div>
+        <div class="dgalwrap">
+          <div class="dgal" aria-label="Ảnh món bulgogi">
+          <div class="dslide"><span class="dslide-lab kr">불고기</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/bulgogi?lock=1" alt="bulgogi 1" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">불고기</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/bulgogi?lock=2" alt="bulgogi 2" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">불고기</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/bulgogi?lock=3" alt="bulgogi 3" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">불고기</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/bulgogi?lock=4" alt="bulgogi 4" onerror="this.style.opacity=0"></div>
+          </div>
+          <button class="dnav p" type="button" aria-label="Ảnh trước">‹</button>
+          <button class="dnav n" type="button" aria-label="Ảnh sau">›</button>
+          <span class="dgalcount">1/4</span>
+        </div>
         <p class="ddesc">Bò thái mỏng ướp xì dầu ngọt (bulgogi) hoặc sườn bò nướng (galbi) — vị Hàn ai cũng mê.</p>
         <ul class="spots">
           <li><div class="spot-info"><span class="spot-name">Woo Lae Oak <span class="kr">우래옥</span></span><span class="spot-area">Jung-gu (Euljiro) · từ 1946 · bulgogi trứ danh</span></div><a class="spot-go" href="https://map.naver.com/p/search/%EC%9A%B0%EB%9E%98%EC%98%A5" target="_blank" rel="noopener">Naver</a></li>
@@ -962,6 +1012,17 @@ footer .love{font-family:'Unbounded';font-weight:600;color:var(--persimmon);font
 
       <article class="dcard" style="--c:#3E8E84">
         <div class="dhead"><span class="em">🍜</span><h3>Naengmyeon — Mì lạnh <span class="kr">냉면</span></h3></div>
+        <div class="dgalwrap">
+          <div class="dgal" aria-label="Ảnh món naengmyeon">
+          <div class="dslide"><span class="dslide-lab kr">냉면</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/naengmyeon?lock=1" alt="naengmyeon 1" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">냉면</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/naengmyeon?lock=2" alt="naengmyeon 2" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">냉면</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/naengmyeon?lock=3" alt="naengmyeon 3" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">냉면</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/naengmyeon?lock=4" alt="naengmyeon 4" onerror="this.style.opacity=0"></div>
+          </div>
+          <button class="dnav p" type="button" aria-label="Ảnh trước">‹</button>
+          <button class="dnav n" type="button" aria-label="Ảnh sau">›</button>
+          <span class="dgalcount">1/4</span>
+        </div>
         <p class="ddesc">Mì kiều mạch trong nước dùng lạnh kiểu Bình Nhưỡng (mul) hoặc trộn cay (bibim). Số 1 mùa hè.</p>
         <ul class="spots">
           <li><div class="spot-info"><span class="spot-name">Eulji Myeonok <span class="kr">을지면옥</span></span><span class="spot-area">Jongno-gu · nước dùng trong thanh</span></div><a class="spot-go" href="https://map.naver.com/p/search/%EC%9D%84%EC%A7%80%EB%A9%B4%EC%98%A5" target="_blank" rel="noopener">Naver</a></li>
@@ -972,6 +1033,17 @@ footer .love{font-family:'Unbounded';font-weight:600;color:var(--persimmon);font
 
       <article class="dcard" style="--c:#D98A2B">
         <div class="dhead"><span class="em">🍲</span><h3>Seolleongtang — Canh xương bò <span class="kr">설렁탕</span></h3></div>
+        <div class="dgalwrap">
+          <div class="dgal" aria-label="Ảnh món seolleongtang">
+          <div class="dslide"><span class="dslide-lab kr">설렁탕</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/seolleongtang?lock=1" alt="seolleongtang 1" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">설렁탕</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/seolleongtang?lock=2" alt="seolleongtang 2" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">설렁탕</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/seolleongtang?lock=3" alt="seolleongtang 3" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">설렁탕</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/seolleongtang?lock=4" alt="seolleongtang 4" onerror="this.style.opacity=0"></div>
+          </div>
+          <button class="dnav p" type="button" aria-label="Ảnh trước">‹</button>
+          <button class="dnav n" type="button" aria-label="Ảnh sau">›</button>
+          <span class="dgalcount">1/4</span>
+        </div>
         <p class="ddesc">Canh xương bò ninh trắng sữa, ăn cùng cơm + hành lá. Bữa sáng ấm bụng kiểu Hàn.</p>
         <ul class="spots">
           <li><div class="spot-info"><span class="spot-name">Imun Seolnongtang <span class="kr">이문설농탕</span></span><span class="spot-area">Jongno-gu · quán cổ nhất Seoul (1904)</span></div><a class="spot-go" href="https://map.naver.com/p/search/%EC%9D%B4%EB%AC%B8%EC%84%A4%EB%86%8D%ED%83%95" target="_blank" rel="noopener">Naver</a></li>
@@ -982,6 +1054,17 @@ footer .love{font-family:'Unbounded';font-weight:600;color:var(--persimmon);font
 
       <article class="dcard" style="--c:#C2417E">
         <div class="dhead"><span class="em">🦀</span><h3>Ganjang Gejang — Ghẹ ngâm tương <span class="kr">간장게장</span></h3></div>
+        <div class="dgalwrap">
+          <div class="dgal" aria-label="Ảnh món gejang">
+          <div class="dslide"><span class="dslide-lab kr">간장게장</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/gejang?lock=1" alt="gejang 1" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">간장게장</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/gejang?lock=2" alt="gejang 2" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">간장게장</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/gejang?lock=3" alt="gejang 3" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">간장게장</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/gejang?lock=4" alt="gejang 4" onerror="this.style.opacity=0"></div>
+          </div>
+          <button class="dnav p" type="button" aria-label="Ảnh trước">‹</button>
+          <button class="dnav n" type="button" aria-label="Ảnh sau">›</button>
+          <span class="dgalcount">1/4</span>
+        </div>
         <p class="ddesc">Ghẹ sống ngâm xì dầu, gạch béo ngậy “ăn cắp cơm”. Đặc sản phải thử ở Seoul.</p>
         <ul class="spots">
           <li><div class="spot-info"><span class="spot-name">Odarijip <span class="kr">오다리집 간장게장</span></span><span class="spot-area">Myeongdong · gạch ghẹ đầy ụ</span></div><a class="spot-go" href="https://map.naver.com/p/search/%EC%98%A4%EB%8B%A4%EB%A6%AC%EC%A7%91%20%EA%B0%84%EC%9E%A5%EA%B2%8C%EC%9E%A5" target="_blank" rel="noopener">Naver</a></li>
@@ -992,6 +1075,17 @@ footer .love{font-family:'Unbounded';font-weight:600;color:var(--persimmon);font
 
       <article class="dcard" style="--c:#C24C3A">
         <div class="dhead"><span class="em">🍗</span><h3>Dakhanmari — Gà hầm nguyên con <span class="kr">닭한마리</span></h3></div>
+        <div class="dgalwrap">
+          <div class="dgal" aria-label="Ảnh món dakhanmari">
+          <div class="dslide"><span class="dslide-lab kr">닭한마리</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/dakhanmari?lock=1" alt="dakhanmari 1" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">닭한마리</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/dakhanmari?lock=2" alt="dakhanmari 2" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">닭한마리</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/dakhanmari?lock=3" alt="dakhanmari 3" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">닭한마리</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/dakhanmari?lock=4" alt="dakhanmari 4" onerror="this.style.opacity=0"></div>
+          </div>
+          <button class="dnav p" type="button" aria-label="Ảnh trước">‹</button>
+          <button class="dnav n" type="button" aria-label="Ảnh sau">›</button>
+          <span class="dgalcount">1/4</span>
+        </div>
         <p class="ddesc">Gà nguyên con hầm nước trong với tỏi + hành, chấm sốt, cuối nồi thả mì. Ấm áp, hợp đi nhóm.</p>
         <ul class="spots">
           <li><div class="spot-info"><span class="spot-name">Jinokhwa Halmae Dakhanmari <span class="kr">진옥화할매 원조닭한마리</span></span><span class="spot-area">Dongdaemun · cái nôi món dakhanmari</span></div><a class="spot-go" href="https://map.naver.com/p/search/%EC%A7%84%EC%98%A5%ED%99%94%ED%95%A0%EB%A7%A4%20%EC%9B%90%EC%A1%B0%EB%8B%AD%ED%95%9C%EB%A7%88%EB%A6%AC" target="_blank" rel="noopener">Naver</a></li>
@@ -1002,6 +1096,17 @@ footer .love{font-family:'Unbounded';font-weight:600;color:var(--persimmon);font
 
       <article class="dcard" style="--c:#7A5EA6">
         <div class="dhead"><span class="em">🥟</span><h3>Kalguksu &amp; Mandu — Mì bột &amp; há cảo <span class="kr">칼국수·만두</span></h3></div>
+        <div class="dgalwrap">
+          <div class="dgal" aria-label="Ảnh món kalguksu">
+          <div class="dslide"><span class="dslide-lab kr">칼국수</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/kalguksu?lock=1" alt="kalguksu 1" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">칼국수</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/kalguksu?lock=2" alt="kalguksu 2" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">칼국수</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/kalguksu?lock=3" alt="kalguksu 3" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">칼국수</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/kalguksu?lock=4" alt="kalguksu 4" onerror="this.style.opacity=0"></div>
+          </div>
+          <button class="dnav p" type="button" aria-label="Ảnh trước">‹</button>
+          <button class="dnav n" type="button" aria-label="Ảnh sau">›</button>
+          <span class="dgalcount">1/4</span>
+        </div>
         <p class="ddesc">Mì sợi thái tay trong nước dùng nóng, ăn kèm mandu (há cảo) &amp; kimchi tự gắp thả ga.</p>
         <ul class="spots">
           <li><div class="spot-info"><span class="spot-name">Myeongdong Gyoja <span class="kr">명동교자</span></span><span class="spot-area">Myeongdong · Michelin Bib · từ 1966</span></div><a class="spot-go" href="https://map.naver.com/p/search/%EB%AA%85%EB%8F%99%EA%B5%90%EC%9E%90" target="_blank" rel="noopener">Naver</a></li>
@@ -1012,6 +1117,17 @@ footer .love{font-family:'Unbounded';font-weight:600;color:var(--persimmon);font
 
       <article class="dcard" style="--c:#2F7D5B">
         <div class="dhead"><span class="em">🍚</span><h3>Bibimbap — Cơm trộn <span class="kr">비빔밥</span></h3></div>
+        <div class="dgalwrap">
+          <div class="dgal" aria-label="Ảnh món bibimbap">
+          <div class="dslide"><span class="dslide-lab kr">비빔밥</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/bibimbap?lock=1" alt="bibimbap 1" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">비빔밥</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/bibimbap?lock=2" alt="bibimbap 2" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">비빔밥</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/bibimbap?lock=3" alt="bibimbap 3" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">비빔밥</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/bibimbap?lock=4" alt="bibimbap 4" onerror="this.style.opacity=0"></div>
+          </div>
+          <button class="dnav p" type="button" aria-label="Ảnh trước">‹</button>
+          <button class="dnav n" type="button" aria-label="Ảnh sau">›</button>
+          <span class="dgalcount">1/4</span>
+        </div>
         <p class="ddesc">Cơm trộn rau + thịt + trứng + gochujang. Kiểu Jeonju (thố đá nóng) là chuẩn vị nhất.</p>
         <ul class="spots">
           <li><div class="spot-info"><span class="spot-name">Gogung <span class="kr">고궁 명동</span></span><span class="spot-area">Myeongdong · bibimbap Jeonju chính hiệu</span></div><a class="spot-go" href="https://map.naver.com/p/search/%EA%B3%A0%EA%B6%81%20%EB%AA%85%EB%8F%99" target="_blank" rel="noopener">Naver</a></li>
@@ -1022,6 +1138,17 @@ footer .love{font-family:'Unbounded';font-weight:600;color:var(--persimmon);font
 
       <article class="dcard" style="--c:#3E8E84">
         <div class="dhead"><span class="em">🐷</span><h3>Jokbal &amp; Bossam — Chân giò luộc <span class="kr">족발·보쌈</span></h3></div>
+        <div class="dgalwrap">
+          <div class="dgal" aria-label="Ảnh món jokbal">
+          <div class="dslide"><span class="dslide-lab kr">족발</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/jokbal?lock=1" alt="jokbal 1" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">족발</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/jokbal?lock=2" alt="jokbal 2" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">족발</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/jokbal?lock=3" alt="jokbal 3" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">족발</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/jokbal?lock=4" alt="jokbal 4" onerror="this.style.opacity=0"></div>
+          </div>
+          <button class="dnav p" type="button" aria-label="Ảnh trước">‹</button>
+          <button class="dnav n" type="button" aria-label="Ảnh sau">›</button>
+          <span class="dgalcount">1/4</span>
+        </div>
         <p class="ddesc">Chân giò heo luộc xì dầu thái lát (jokbal) / thịt luộc cuốn kimchi (bossam). Mềm, thơm, đậm đà.</p>
         <ul class="spots">
           <li><div class="spot-info"><span class="spot-name">Manjok Ohyang Jokbal <span class="kr">만족오향족발</span></span><span class="spot-area">Seosomun (Jung-gu) · Michelin Bib</span></div><a class="spot-go" href="https://map.naver.com/p/search/%EB%A7%8C%EC%A1%B1%EC%98%A4%ED%96%A5%EC%A1%B1%EB%B0%9C" target="_blank" rel="noopener">Naver</a></li>
@@ -1032,6 +1159,17 @@ footer .love{font-family:'Unbounded';font-weight:600;color:var(--persimmon);font
 
       <article class="dcard" style="--c:#D98A2B">
         <div class="dhead"><span class="em">🥘</span><h3>Bindaetteok &amp; Jeon — Bánh chiên <span class="kr">빈대떡·전</span></h3></div>
+        <div class="dgalwrap">
+          <div class="dgal" aria-label="Ảnh món bindaetteok">
+          <div class="dslide"><span class="dslide-lab kr">빈대떡</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/bindaetteok?lock=1" alt="bindaetteok 1" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">빈대떡</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/bindaetteok?lock=2" alt="bindaetteok 2" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">빈대떡</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/bindaetteok?lock=3" alt="bindaetteok 3" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">빈대떡</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/bindaetteok?lock=4" alt="bindaetteok 4" onerror="this.style.opacity=0"></div>
+          </div>
+          <button class="dnav p" type="button" aria-label="Ảnh trước">‹</button>
+          <button class="dnav n" type="button" aria-label="Ảnh sau">›</button>
+          <span class="dgalcount">1/4</span>
+        </div>
         <p class="ddesc">Bánh đậu xanh xay chiên giòn rụm, ăn nóng cùng makgeolli. Vị chợ truyền thống đúng điệu.</p>
         <ul class="spots">
           <li><div class="spot-info"><span class="spot-name">Sunhui-ne Bindaetteok <span class="kr">순희네빈대떡</span></span><span class="spot-area">Chợ Gwangjang · quầy nổi tiếng nhất</span></div><a class="spot-go" href="https://map.naver.com/p/search/%EC%88%9C%ED%9D%AC%EB%84%A4%EB%B9%88%EB%8C%80%EB%96%A1" target="_blank" rel="noopener">Naver</a></li>
@@ -1042,6 +1180,17 @@ footer .love{font-family:'Unbounded';font-weight:600;color:var(--persimmon);font
 
       <article class="dcard" style="--c:#C2417E">
         <div class="dhead"><span class="em">🌶️</span><h3>Tteokbokki &amp; street food <span class="kr">떡볶이</span></h3></div>
+        <div class="dgalwrap">
+          <div class="dgal" aria-label="Ảnh món tteokbokki">
+          <div class="dslide"><span class="dslide-lab kr">떡볶이</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/tteokbokki?lock=1" alt="tteokbokki 1" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">떡볶이</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/tteokbokki?lock=2" alt="tteokbokki 2" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">떡볶이</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/tteokbokki?lock=3" alt="tteokbokki 3" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">떡볶이</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/tteokbokki?lock=4" alt="tteokbokki 4" onerror="this.style.opacity=0"></div>
+          </div>
+          <button class="dnav p" type="button" aria-label="Ảnh trước">‹</button>
+          <button class="dnav n" type="button" aria-label="Ảnh sau">›</button>
+          <span class="dgalcount">1/4</span>
+        </div>
         <p class="ddesc">Bánh gạo sốt cay ngọt — món ăn đường phố quốc dân. Kèm mayak gimbap, sundae, twigim.</p>
         <ul class="spots">
           <li><div class="spot-info"><span class="spot-name">Chợ Gwangjang <span class="kr">광장시장</span></span><span class="spot-area">Jongno-gu · mayak gimbap + tteokbokki</span></div><a class="spot-go" href="https://map.naver.com/p/search/%EA%B4%91%EC%9E%A5%EC%8B%9C%EC%9E%A5" target="_blank" rel="noopener">Naver</a></li>
@@ -1053,6 +1202,17 @@ footer .love{font-family:'Unbounded';font-weight:600;color:var(--persimmon);font
 
       <article class="dcard" style="--c:#C24C3A">
         <div class="dhead"><span class="em">🐟</span><h3>Jangeo-gui — Lươn nướng <span class="kr">장어구이</span></h3></div>
+        <div class="dgalwrap">
+          <div class="dgal" aria-label="Ảnh món jangeo">
+          <div class="dslide"><span class="dslide-lab kr">장어구이</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/jangeo?lock=1" alt="jangeo 1" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">장어구이</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/jangeo?lock=2" alt="jangeo 2" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">장어구이</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/jangeo?lock=3" alt="jangeo 3" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">장어구이</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/jangeo?lock=4" alt="jangeo 4" onerror="this.style.opacity=0"></div>
+          </div>
+          <button class="dnav p" type="button" aria-label="Ảnh trước">‹</button>
+          <button class="dnav n" type="button" aria-label="Ảnh sau">›</button>
+          <span class="dgalcount">1/4</span>
+        </div>
         <p class="ddesc">Lươn nước ngọt nướng than, phết sốt xì dầu hoặc muối — món bổ dưỡng (boyang) số 1 mùa hè. Cuốn gừng ngâm + lá tía tô.</p>
         <ul class="spots">
           <li><div class="spot-info"><span class="spot-name">Pungcheonga <span class="kr">풍천가</span></span><span class="spot-area">Cheongdam (Gangnam) · lươn to, chất lượng cao</span></div><a class="spot-go" href="https://map.naver.com/p/search/%ED%92%8D%EC%B2%9C%EA%B0%80%20%EC%B2%AD%EB%8B%B4" target="_blank" rel="noopener">Naver</a></li>
@@ -1063,6 +1223,17 @@ footer .love{font-family:'Unbounded';font-weight:600;color:var(--persimmon);font
 
       <article class="dcard" style="--c:#7A5EA6">
         <div class="dhead"><span class="em">🍲</span><h3>Budae-jjigae — Lẩu quân đội <span class="kr">부대찌개</span></h3></div>
+        <div class="dgalwrap">
+          <div class="dgal" aria-label="Ảnh món budaejjigae">
+          <div class="dslide"><span class="dslide-lab kr">부대찌개</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/budaejjigae?lock=1" alt="budaejjigae 1" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">부대찌개</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/budaejjigae?lock=2" alt="budaejjigae 2" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">부대찌개</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/budaejjigae?lock=3" alt="budaejjigae 3" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">부대찌개</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/budaejjigae?lock=4" alt="budaejjigae 4" onerror="this.style.opacity=0"></div>
+          </div>
+          <button class="dnav p" type="button" aria-label="Ảnh trước">‹</button>
+          <button class="dnav n" type="button" aria-label="Ảnh sau">›</button>
+          <span class="dgalcount">1/4</span>
+        </div>
         <p class="ddesc">Lẩu kimchi nấu cùng xúc xích, ham, mì gói &amp; phô mai — ra đời thời hậu chiến, nay là món tụ tập quốc dân.</p>
         <ul class="spots">
           <li><div class="spot-info"><span class="spot-name">Odeng Sikdang <span class="kr">오뎅식당</span></span><span class="spot-area">Uijeongbu · quán khai sinh budae-jjigae</span></div><a class="spot-go" href="https://map.naver.com/p/search/%EC%98%A4%EB%8E%85%EC%8B%9D%EB%8B%B9%20%EC%9D%98%EC%A0%95%EB%B6%80" target="_blank" rel="noopener">Naver</a></li>
@@ -1073,6 +1244,17 @@ footer .love{font-family:'Unbounded';font-weight:600;color:var(--persimmon);font
 
       <article class="dcard" style="--c:#2F7D5B">
         <div class="dhead"><span class="em">🥬</span><h3>Kimchi-jjigae — Canh kimchi <span class="kr">김치찌개</span></h3></div>
+        <div class="dgalwrap">
+          <div class="dgal" aria-label="Ảnh món kimchijjigae">
+          <div class="dslide"><span class="dslide-lab kr">김치찌개</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/kimchijjigae?lock=1" alt="kimchijjigae 1" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">김치찌개</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/kimchijjigae?lock=2" alt="kimchijjigae 2" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">김치찌개</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/kimchijjigae?lock=3" alt="kimchijjigae 3" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">김치찌개</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/kimchijjigae?lock=4" alt="kimchijjigae 4" onerror="this.style.opacity=0"></div>
+          </div>
+          <button class="dnav p" type="button" aria-label="Ảnh trước">‹</button>
+          <button class="dnav n" type="button" aria-label="Ảnh sau">›</button>
+          <span class="dgalcount">1/4</span>
+        </div>
         <p class="ddesc">Canh kimchi chua cay hầm thịt heo + đậu phụ, ăn cùng cơm trắng. Món “cơm nhà” mộc mạc mà gây nghiện.</p>
         <ul class="spots">
           <li><div class="spot-info"><span class="spot-name">Eunjujeong <span class="kr">은주정</span></span><span class="spot-area">Euljiro (Jung-gu) · kimchi-jjigae + thịt luộc trứ danh</span></div><a class="spot-go" href="https://map.naver.com/p/search/%EC%9D%80%EC%A3%BC%EC%A0%95" target="_blank" rel="noopener">Naver</a></li>
@@ -1083,6 +1265,17 @@ footer .love{font-family:'Unbounded';font-weight:600;color:var(--persimmon);font
 
       <article class="dcard" style="--c:#3E8E84">
         <div class="dhead"><span class="em">🥣</span><h3>Sundubu-jjigae — Canh đậu hũ non <span class="kr">순두부찌개</span></h3></div>
+        <div class="dgalwrap">
+          <div class="dgal" aria-label="Ảnh món sundubu">
+          <div class="dslide"><span class="dslide-lab kr">순두부찌개</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/sundubu?lock=1" alt="sundubu 1" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">순두부찌개</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/sundubu?lock=2" alt="sundubu 2" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">순두부찌개</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/sundubu?lock=3" alt="sundubu 3" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">순두부찌개</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/sundubu?lock=4" alt="sundubu 4" onerror="this.style.opacity=0"></div>
+          </div>
+          <button class="dnav p" type="button" aria-label="Ảnh trước">‹</button>
+          <button class="dnav n" type="button" aria-label="Ảnh sau">›</button>
+          <span class="dgalcount">1/4</span>
+        </div>
         <p class="ddesc">Canh đậu hũ non sốt ớt cay nóng hổi, đập thêm trứng sống. Nóng sôi sùng sục, đưa cơm cực đỉnh.</p>
         <ul class="spots">
           <li><div class="spot-info"><span class="spot-name">Bukchangdong Sundubu <span class="kr">북창동순두부</span></span><span class="spot-area">City Hall / Myeongdong · chuẩn vị, nhiều chi nhánh</span></div><a class="spot-go" href="https://map.naver.com/p/search/%EB%B6%81%EC%B0%BD%EB%8F%99%EC%88%9C%EB%91%90%EB%B6%80" target="_blank" rel="noopener">Naver</a></li>
@@ -1093,6 +1286,17 @@ footer .love{font-family:'Unbounded';font-weight:600;color:var(--persimmon);font
 
       <article class="dcard" style="--c:#D98A2B">
         <div class="dhead"><span class="em">🌅</span><h3>Haejangguk — Canh giải rượu <span class="kr">해장국</span></h3></div>
+        <div class="dgalwrap">
+          <div class="dgal" aria-label="Ảnh món haejangguk">
+          <div class="dslide"><span class="dslide-lab kr">해장국</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/haejangguk?lock=1" alt="haejangguk 1" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">해장국</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/haejangguk?lock=2" alt="haejangguk 2" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">해장국</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/haejangguk?lock=3" alt="haejangguk 3" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">해장국</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/haejangguk?lock=4" alt="haejangguk 4" onerror="this.style.opacity=0"></div>
+          </div>
+          <button class="dnav p" type="button" aria-label="Ảnh trước">‹</button>
+          <button class="dnav n" type="button" aria-label="Ảnh sau">›</button>
+          <span class="dgalcount">1/4</span>
+        </div>
         <p class="ddesc">Canh “giải rượu” nấu xương + huyết bò + rau, ăn sáng hồi sức. Đậm đà, ấm bụng kiểu dân lao động.</p>
         <ul class="spots">
           <li><div class="spot-info"><span class="spot-name">Cheongjinok <span class="kr">청진옥</span></span><span class="spot-area">Jongno (Gwanghwamun) · ông tổ haejangguk, từ 1937</span></div><a class="spot-go" href="https://map.naver.com/p/search/%EC%B2%AD%EC%A7%84%EC%98%A5" target="_blank" rel="noopener">Naver</a></li>
@@ -1103,6 +1307,17 @@ footer .love{font-family:'Unbounded';font-weight:600;color:var(--persimmon);font
 
       <article class="dcard" style="--c:#C2417E">
         <div class="dhead"><span class="em">🥔</span><h3>Gamjatang — Lẩu xương heo khoai tây <span class="kr">감자탕</span></h3></div>
+        <div class="dgalwrap">
+          <div class="dgal" aria-label="Ảnh món gamjatang">
+          <div class="dslide"><span class="dslide-lab kr">감자탕</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/gamjatang?lock=1" alt="gamjatang 1" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">감자탕</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/gamjatang?lock=2" alt="gamjatang 2" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">감자탕</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/gamjatang?lock=3" alt="gamjatang 3" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">감자탕</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/gamjatang?lock=4" alt="gamjatang 4" onerror="this.style.opacity=0"></div>
+          </div>
+          <button class="dnav p" type="button" aria-label="Ảnh trước">‹</button>
+          <button class="dnav n" type="button" aria-label="Ảnh sau">›</button>
+          <span class="dgalcount">1/4</span>
+        </div>
         <p class="ddesc">Lẩu xương sống lưng heo ninh mềm với khoai tây, lá tía tô &amp; tương đậu cay. Gỡ xương ăn cực đã.</p>
         <ul class="spots">
           <li><div class="spot-info"><span class="spot-name">Taejo Gamjaguk <span class="kr">태조감자국</span></span><span class="spot-area">Seongshin/Bomun (Seongbuk) · quán gamjatang lâu đời</span></div><a class="spot-go" href="https://map.naver.com/p/search/%ED%83%9C%EC%A1%B0%EA%B0%90%EC%9E%90%EA%B5%AD" target="_blank" rel="noopener">Naver</a></li>
@@ -1113,6 +1328,17 @@ footer .love{font-family:'Unbounded';font-weight:600;color:var(--persimmon);font
 
       <article class="dcard" style="--c:#C24C3A">
         <div class="dhead"><span class="em">🍗</span><h3>Jjimdak — Gà om Andong <span class="kr">찜닭</span></h3></div>
+        <div class="dgalwrap">
+          <div class="dgal" aria-label="Ảnh món jjimdak">
+          <div class="dslide"><span class="dslide-lab kr">찜닭</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/jjimdak?lock=1" alt="jjimdak 1" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">찜닭</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/jjimdak?lock=2" alt="jjimdak 2" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">찜닭</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/jjimdak?lock=3" alt="jjimdak 3" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">찜닭</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/jjimdak?lock=4" alt="jjimdak 4" onerror="this.style.opacity=0"></div>
+          </div>
+          <button class="dnav p" type="button" aria-label="Ảnh trước">‹</button>
+          <button class="dnav n" type="button" aria-label="Ảnh sau">›</button>
+          <span class="dgalcount">1/4</span>
+        </div>
         <p class="ddesc">Gà om xì dầu kiểu Andong với miến dai, khoai tây, cà rốt &amp; ớt khô. Ngọt mặn đậm đà, hợp đi nhóm.</p>
         <ul class="spots">
           <li><div class="spot-info"><span class="spot-name">Bongchu Jjimdak <span class="kr">봉추찜닭</span></span><span class="spot-area">Daehangno &amp; khắp Seoul · phổ biến jjimdak Andong</span></div><a class="spot-go" href="https://map.naver.com/p/search/%EB%B4%89%EC%B6%94%EC%B0%9C%EB%8B%AD" target="_blank" rel="noopener">Naver</a></li>
@@ -1129,6 +1355,17 @@ footer .love{font-family:'Unbounded';font-weight:600;color:var(--persimmon);font
 
       <article class="dcard" style="--c:#7A5EA6">
         <div class="dhead"><span class="em">🍧</span><h3>Bingsu — Đá bào <span class="kr">빙수</span></h3></div>
+        <div class="dgalwrap">
+          <div class="dgal" aria-label="Ảnh món bingsu">
+          <div class="dslide"><span class="dslide-lab kr">빙수</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/bingsu?lock=1" alt="bingsu 1" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">빙수</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/bingsu?lock=2" alt="bingsu 2" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">빙수</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/bingsu?lock=3" alt="bingsu 3" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">빙수</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/bingsu?lock=4" alt="bingsu 4" onerror="this.style.opacity=0"></div>
+          </div>
+          <button class="dnav p" type="button" aria-label="Ảnh trước">‹</button>
+          <button class="dnav n" type="button" aria-label="Ảnh sau">›</button>
+          <span class="dgalcount">1/4</span>
+        </div>
         <p class="ddesc">Đá bào mịn phủ đậu đỏ + bánh tteok (patbingsu) hoặc sữa/dâu/trà xanh. Món tráng miệng giải nhiệt huyền thoại.</p>
         <ul class="spots">
           <li><div class="spot-info"><span class="spot-name">Sulbing <span class="kr">설빙</span></span><span class="spot-area">Chuỗi khắp Seoul · injeolmi &amp; dâu bingsu</span></div><a class="spot-go" href="https://map.naver.com/p/search/%EC%84%A4%EB%B9%99" target="_blank" rel="noopener">Naver</a></li>
@@ -1139,6 +1376,17 @@ footer .love{font-family:'Unbounded';font-weight:600;color:var(--persimmon);font
 
       <article class="dcard" style="--c:#2F7D5B">
         <div class="dhead"><span class="em">🥮</span><h3>Tteok &amp; Hangwa — Bánh gạo truyền thống <span class="kr">떡·한과</span></h3></div>
+        <div class="dgalwrap">
+          <div class="dgal" aria-label="Ảnh món tteok">
+          <div class="dslide"><span class="dslide-lab kr">떡</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/tteok?lock=1" alt="tteok 1" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">떡</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/tteok?lock=2" alt="tteok 2" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">떡</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/tteok?lock=3" alt="tteok 3" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">떡</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/tteok?lock=4" alt="tteok 4" onerror="this.style.opacity=0"></div>
+          </div>
+          <button class="dnav p" type="button" aria-label="Ảnh trước">‹</button>
+          <button class="dnav n" type="button" aria-label="Ảnh sau">›</button>
+          <span class="dgalcount">1/4</span>
+        </div>
         <p class="ddesc">Bánh gạo nếp đủ màu (tteok) &amp; bánh mứt cổ truyền (hangwa) — dẻo, thanh, ít ngọt. Mua làm quà rất hợp.</p>
         <ul class="spots">
           <li><div class="spot-info"><span class="spot-name">Nakwon Tteokjip <span class="kr">낙원떡집</span></span><span class="spot-area">Insadong (Jongno) · tiệm bánh gạo trứ danh</span></div><a class="spot-go" href="https://map.naver.com/p/search/%EB%82%99%EC%9B%90%EB%96%A1%EC%A7%91" target="_blank" rel="noopener">Naver</a></li>
@@ -1149,6 +1397,17 @@ footer .love{font-family:'Unbounded';font-weight:600;color:var(--persimmon);font
 
       <article class="dcard" style="--c:#3E8E84">
         <div class="dhead"><span class="em">🥞</span><h3>Hotteok &amp; bánh đường phố <span class="kr">호떡</span></h3></div>
+        <div class="dgalwrap">
+          <div class="dgal" aria-label="Ảnh món hotteok">
+          <div class="dslide"><span class="dslide-lab kr">호떡</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/hotteok?lock=1" alt="hotteok 1" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">호떡</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/hotteok?lock=2" alt="hotteok 2" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">호떡</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/hotteok?lock=3" alt="hotteok 3" onerror="this.style.opacity=0"></div>
+          <div class="dslide"><span class="dslide-lab kr">호떡</span><img loading="lazy" decoding="async" src="https://loremflickr.com/440/300/hotteok?lock=4" alt="hotteok 4" onerror="this.style.opacity=0"></div>
+          </div>
+          <button class="dnav p" type="button" aria-label="Ảnh trước">‹</button>
+          <button class="dnav n" type="button" aria-label="Ảnh sau">›</button>
+          <span class="dgalcount">1/4</span>
+        </div>
         <p class="ddesc">Bánh rán nhân đường nâu chảy + hạt (hotteok), bánh cá nhân đậu đỏ (bungeoppang), bánh trứng (gyeranppang).</p>
         <ul class="spots">
           <li><div class="spot-info"><span class="spot-name">Chợ Namdaemun <span class="kr">남대문시장</span></span><span class="spot-area">Jung-gu · hotteok nhân hạt nổi tiếng</span></div><a class="spot-go" href="https://map.naver.com/p/search/%EB%82%A8%EB%8C%80%EB%AC%B8%EC%8B%9C%EC%9E%A5%20%ED%98%B8%EB%96%A1" target="_blank" rel="noopener">Naver</a></li>
@@ -1178,6 +1437,26 @@ footer .love{font-family:'Unbounded';font-weight:600;color:var(--persimmon);font
     for(var k in panes){panes[k].hidden=(k!==t);}
     if(t==='trip'&&window._kmap){setTimeout(function(){window._kmap.invalidateSize();},30);}
     window.scrollTo({top:0,behavior:'smooth'});
+  });
+})();
+</script>
+
+<script>
+// dish image carousel (swipe + arrows + counter)
+(function(){
+  document.addEventListener('click',function(e){
+    var btn=e.target.closest('.dnav'); if(!btn)return;
+    var g=btn.parentElement.querySelector('.dgal');
+    g.scrollBy({left:(btn.classList.contains('n')?1:-1)*g.clientWidth,behavior:'smooth'});
+  });
+  document.querySelectorAll('.dgal').forEach(function(g){
+    var n=g.querySelectorAll('.dslide').length;
+    var c=g.parentElement.querySelector('.dgalcount');
+    if(!c)return;
+    g.addEventListener('scroll',function(){
+      var i=Math.round(g.scrollLeft/g.clientWidth)+1;
+      c.textContent=i+'/'+n;
+    },{passive:true});
   });
 })();
 </script>
